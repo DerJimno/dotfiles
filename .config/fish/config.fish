@@ -3,8 +3,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-
+# removes welcome message
 set fish_greeting
+
 ########## prompt ###########
 function fish_prompt
     set -g fish_prompt_pwd_dir_length 3
@@ -25,10 +26,6 @@ alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=$HOME'
 
 ########## Exports ###########
 export EDITOR=vim
-#export PATH=$PATH:/some/path
 export TERM=alacritty
-export HISTCONTROL=erasedups
-export HISTSIZE=500
 
 ######### Autostart ##########
-
