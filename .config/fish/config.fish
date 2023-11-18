@@ -25,7 +25,7 @@ alias aura='sudo aura'
 alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=$HOME'
 
 ########## Exports ###########
-export EDITOR=vim
+export EDITOR=nvim
 export TERM=alacritty
 
 ######### Autostart ##########
