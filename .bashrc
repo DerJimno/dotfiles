@@ -20,11 +20,10 @@ alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=/$HOME'
 
 ########## Exports ###########
 export EDITOR=nvim
-#export PATH=$PATH:/some/path
 export TERM=alacritty
 export HISTCONTROL=erasedups
 export HISTSIZE=500
-
+export MANPAGER="nvim +Man!"
 
 ######### Autostart ##########
 pfetch
@@ -32,3 +31,4 @@ pfetch
 ############ binds ###########
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+
