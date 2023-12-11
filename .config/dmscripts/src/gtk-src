@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+case "$1" in
+'TokyoNight')     gtk="Tokyo-Night";;
+'OceanicNext')    gtk="Oceanic-Next";;
+'Monokai')        gtk="Monokai";;
+'Nord')           gtk="Nord";;
+'SolarizedDark')  gtk="Numix Solarized";;
+'SolarizedLight') gtk="Arc-Lighter";;
+esac
+
+echo "$gtk"

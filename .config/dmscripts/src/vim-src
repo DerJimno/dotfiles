@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+case "$1" in
+'TokyoNight')     vim="tokyo-night-theme";;
+'OceanicNext')    vim="oceanicnext";;
+'Monokai')        vim="monokai";;
+'Nord')           vim="nord";;
+'SolarizedDark')  vim="solarized-dark";;
+'SolarizedLight') vim="solarized-light";;
+esac
+
+echo "$vim"

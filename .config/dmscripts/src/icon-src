@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+case "$1" in
+'TokyoNight')     icon="Adwaita";;
+'OceanicNext')    icon="Breeze-Nord-Dark-Icons";;
+'Monokai')        icon="Arc";;
+'Nord')           icon="Arc";;
+'SolarizedDark')  icon="Solarized-Material-Magenta";;
+'SolarizedLight') icon="Solarized-Material-Magenta";;
+esac
+
+echo "$icon"
