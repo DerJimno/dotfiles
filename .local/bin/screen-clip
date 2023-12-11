@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+[ -d screenshots ] || mkdir screenshots
+name=$(date +"%Y-%m-%d-@%H-%M-%S")
+file_name=$name.png
+scrot -s ~/screenshots/$file_name
+xclip -selection clipboard -target image/png -i ~/screenshots/$file_name
