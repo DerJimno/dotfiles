@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+
+
+#Variables
+DMENU="dmenu -i -l 20 -p"
+DMTERM="alacritty -e"
+DMEDITOR="${DMTERM} nvim"
+DMBROWSER="brave"
+
+# Notes dir
+notes="${HOME}/.config/dmscripts/notes"
+
+# Config Files
+declare -Ag confedit_list
+confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+confedit_list[bashrc]="$HOME/.bashrc"
+confedit_list[fish]="$HOME/.config/fish/config.fish"
+confedit_list[neovim]="$HOME/.config/nvim/init.lua"
+confedit_list[neovim hlts]="$HOME/.config/nvim/lua/jimno/highlights.lua"
+confedit_list[neovim plg]="$HOME/.config/nvim/lua/jimno/plugins.lua"
+confedit_list[neovim base]="$HOME/.config/nvim/lua/jimno/base.lua"
+confedit_list[neovim maps]="$HOME/.config/nvim/lua/jimno/maps.lua"
+confedit_list[picom]="$HOME/.config/picom/picom.conf"
+confedit_list[xmobar]="$HOME/.config/xmobar/solarized-dark-xmobar.hs"
+confedit_list[xmonad]="$HOME/.config/xmonad/xmonad.hs"
+confedit_list[dmscript]="$HOME/.config/dmscripts/config/config"
+
+# Radio Stations
+declare -Ag radio_stations 
+radio_stations[Lofi]="http://192.95.39.65:5607"
+radio_stations[The Groove]="http://http://uk7.internet-radio.com:8352/"
+radio_stations[Stratford]="http://us2.internet-radio.com:8151/"
+radio_stations[Cafe Radio]="http://us2.internet-radio.com:8443/"
+radio_stations[Matt Johnson]="http://us2.internet-radio.com:8046/"
+radio_stations[Jazz Sakura]="https://kathy.torontocast.com:3330/"
+radio_stations[Top Blues]="http://us3.internet-radio.com:8342/"
+radio_stations[Xrds Blues]="http://us1.internet-radio.com:8321"
+radio_stations[Kcvr Chileville]="http://us3.internet-radio.com:8313/"
+radio_stations[Hip Hop]="http://192.99.41.102:5429/"
+radio_stations[Dilema]="http://opportunity.shoutca.st:8150"
+radio_stations[Afrik]="http://192.95.18.39:5127/"
+radio_stations[J-Pop Sakura]="https://cast1.torontocast.com:2170/"
+radio_stations[J-Pop Kawaii]="https://kathy.torontocast.com:3060"
+radio_stations[Otaku]="https://kathy.torontocast.com:2880/"
+radio_stations[Stereo Anime]="http://radio.stereoanime.net:8000"
+radio_stations[Shadowfr69]="http://radio.shadowfr69.eu:80"
+radio_stations[Joy Radio]="http://uk5.internet-radio.com:8174"
+radio_stations[Rain-dio]="http://198.27.120.235:8850"
+radio_stations[Deep House]="http://lyra.shoutca.st:8589/"
+radio_stations[Afro Touch]="http://167.114.131.90:5546"
+radio_stations[Boakye]="http://149.56.234.138:8177/"
+radio_stations[Zouk Martinique]="http://195.114.19.178:8020/"
+radio_stations[Mixx Martinique]="http://srv2.streaming-ingenierie.fr:8110"
+radio_stations[Safira]="http://stream12.hosterion.pl:9290"
+radio_stations[Jil Fm]="https://my.radioalgerie.dz/player/jilfm.html"
+radio_stations[Bah-dja]="https://my.radioalgerie.dz/player/bahdja.html"
+radio_stations[Chaine-3]="https://my.radioalgerie.dz/player/chaine3.html"
+radio_stations[kill]="nil"
+
+# Web search
+declare -Ag websearch 
+websearch[Google]="https://www.google.com/search?q="
+websearch[Wikipedia]="https://en.wikipedia.org/w/index.php?search="
+websearch[Youtube]="https://www.youtube.com/results?search_query="
+websearch[AUR]="https://aur.archlinux.org/packages/?0=0&K="
+websearch[Archpkg]="https://archlinux.org/packages/?sort=&q="
+websearch[ArchWiki]="https://wiki.archlinux.org/index.php?search="
+websearch[Gamivo]="https://www.gamivo.com/search/"
+websearch[StackOverFlow]="https://www.stackoverflow.com/search?q="
+websearch[ThePirateBay]="https://www.thepiratebay.org/search.php?q="
+websearch[Hoogle(Haskell)]="https://hoogle.haskell.org/?hoogle="
+
+
+declare -Ag color_scheme
+color_scheme[Monokai]="monokai"
+color_scheme[Nord]="nord"
+color_scheme[SolarizedDark]="solarized-dark"
+color_scheme[SolarizedLight]="solarized-light"
+color_scheme[OceanicNext]="oceanic-next"
+color_scheme[TokyoNight]="tokyo-night"
+
+declare -Ag font_size
+font_size[Comic Mono]="10 10"
+font_size[Fira Code]="10 9"
+font_size[Cascadia Code]="10 9.5"
+font_size[Hack]="10 9"
+font_size[Inconsolata]="11 10"
+font_size[Ubuntu Mono]="11 11"
+font_size[Terminus]="11 9.5"
+font_size[Monofur]="12 11"
+
+# Bookmarks from Brave
+declare -Ag bookmarks
+while IFS='=' read -r name url; do
+    bookmarks["$name"]=$url
+done < <(cat $HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks | grep -E '"name":|"url":' | awk '{
+    if ($0 ~ /"name":/) {
+        gsub(/[[:space:]]*"name":[[:space:]]*|"[,}]*/, "", $0);
+        name = $0;
+    } else if ($0 ~ /"url":/) {
+        gsub(/[[:space:]]*"url":[[:space:]]*|"[,}]*/, "", $0);
+        printf "%s=\"%s\"\n", name, $0;
+    }
+}' | sed 's/"//g')
+
+
+# Podcast Rss
+declare -Ag rss 
+rss[Mach es einfach - Ben Ouattara]="https://benouattara.libsyn.com/rss"
+rss[Ruby On Rails - Elise Shaffer and Brian Mariani]="https://feeds.fireside.fm/therubyonrailspodcast/rss"
+rss[Quran - Abdul Muhsin Al Qasim]="https://qurancentral.com/audio/abdul-muhsin-al-qasim/feed/"
+rss[SAYER - Adam Bash]="https://feeds.feedburner.com/sayer"
+rss[Git Tips - Chris Hunt]="https://www.briefs.fm/git-tips.xml"
+rss[Remote Ruby - Jason Charnes, Chris Oliver, Andrew Mason]="https://feeds.buzzsprout.com/2260490.rss"
+rss[Syntax(WebDev) - Wes Bos]="https://feed.syntax.fm/rss"
+rss[kill]="nil"
