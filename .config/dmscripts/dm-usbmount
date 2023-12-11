@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+# Drive to ignore
+ignored="sda"
+
+
+
+drive_count() {
+    count="$(echo "$1" | wc -l)"
+}
+
+mount_all() {
+    while IFS= read -r drive; do
+        udisksctl mount -b "${drive%% *}"
+    done < <(printf '%s\n' "$mountable")
+}
+
+unmount_all() {
+    while IFS= read -r drive; do
+        udisksctl unmount -b "${drive%% *}"
+        # done < <(printf '%s\n' "$mounted")
+    done < <(printf '%s\n' "${mounted%%* }")
+}
+
+mount() {
+    mountable="$(lsblk -lp | awk '/^\/dev\/sd.*part $/ { print $1 " ("$4")" }' | grep -v "$ignored")"
+    [ "$mountable" = "" ] && exit 1
+
+    drive_count "$mountable"
+    [ "$count" = "1" ] && options="$mountable" || options="${mountable%%* }"$'\n'"all"
+
+    chosen="$(printf '%s' "$options" | ${DMENU} "Drive to mount?")" || exit 1
+    if [ "$chosen" = "all" ]; then
+        mount_all
+    else
+        udisksctl mount -b "${chosen%% *}"
+    fi
+}
+
+unmount() {
+    # mounted="$(lsblk -lp | awk '/run/ { print $1 }')"
+    mounted="$(lsblk -lp | grep 'run')"
+    [ "$mounted" = "" ] && exit 1
+
+    # drive_count "$mounted"
+    drive_count "${mounted%%* }"
+    # [ "$count" = "1" ] && options="$mounted" || options="$mounted\nall"
+    [ "$count" = "1" ] && options="${mounted%%* }" || options="${mounted%%* }"$'\n'"all"
+    chosen="$(printf '%s' "${options}" | ${DMENU} "Drive to unmount?")"
+    if [ "$chosen" = "all" ]; then
+        unmount_all
+    else
+        udisksctl unmount -b "${chosen%% *}"
+    fi
+}
+
+choice=$(printf 'Mount USB\nUnmount USB\nQuit' | ${DMENU} 'USB:' )
+case "$choice" in
+'Mount USB')
+    mount
+;;
+'Unmount USB')
+    unmount
+;;
+'Quit')
+    echo "Programm Terminated." && exit 0
+;;
+esac

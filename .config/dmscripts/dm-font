@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+choice=$(printf '%s\n' "${!font_size[@]}" | sort | ${DMENU} 'Set font:')
+read -r size xmobar_size <<< "${font_size[$choice]}"
+
+if [ "$choice" ]; then
+    # Alacritty 
+    sed -i -e "s/family.*/family: ${choice}/g; s/size.*/size: ${size}/g" "$HOME"/.config/alacritty/alacritty.yml || echo "Error setting Alacritty Font"
+    # Gtk font 
+    sed -i "s/\/FontName.*/\/FontName \"$choice $size\"/g;" "$HOME"/.xsettingsd && killall -HUP xsettingsd || echo "Cannot modify xsettingsd"
+    # XMOBAR
+    sed  -i "s/font =.*/font = \"$choice Bold $xmobar_size\"/g" "$HOME"/.config/xmobar/*.hs || echo "Cannot modify xmonad.hs"
+    xmonad --restart || echo "Xmonad not running"
+else
+  echo "Program terminated." && exit 0
+fi

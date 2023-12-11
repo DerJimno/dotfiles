@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+choice=$(printf '%s\n' "${!color_scheme[@]}" | sort | ${DMENU} 'Choose color scheme:' "${@}")
+vim_theme=$(.config/dmscripts/src/vim-src "$choice")
+gtk_theme=$(.config/dmscripts/src/gtk-src "$choice")
+icon_theme=$(.config/dmscripts/src/icon-src "$choice")
+
+if [ "$choice" ]; then
+    ## Alacritty
+    sed -i "s/themes\/.*/themes\/${color_scheme[$choice]}.yaml/g" "$HOME"/.config/alacritty/alacritty.yml || echo "Error setting Alacritty colors"
+    # Nvim Theme
+    sed -i "s/base16.*/base16-$vim_theme/g" "$HOME"/.local/share/nvim/colorscheme-file || echo "Cannot modify colorscheme-file" /
+    # Gtk Theme + Icons
+    sed -i -e "s/\/ThemeName.*/\/ThemeName \"$gtk_theme\"/g; s/IconThemeName.*/IconThemeName \"$icon_theme\"/g" "$HOME"/.xsettingsd && killall -HUP xsettingsd || echo "Cannot modify xsettingsd"
+    ## XMONAD
+    sed  -i "s/import Colors.*/import Colors.$choice/g" "$HOME"/.config/xmonad/xmonad.hs || echo "Cannot modify xmonad.hs"
+    xmonad --restart || echo "Xmonad not running"
+else
+  echo "Program terminated." && exit 0
+fi

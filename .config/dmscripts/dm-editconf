@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+choice=$(printf '%s\n' "${!confedit_list[@]}" | sort | ${DMENU} 'Edit config:' "$@")
+
+
+if [ "$choice" ]; then
+    cfg=$(printf '%s\n' "${confedit_list["${choice}"]}")
+    $DMEDITOR "$cfg"
+else
+    echo "Program terminated." && exit 0
+fi

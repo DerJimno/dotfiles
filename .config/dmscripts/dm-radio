@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+choice=$(printf '%s\n' "${!radio_stations[@]}" | sort | ${DMENU} 'Listen to:' "$@")
+
+if [ "$choice" = "kill" ]; then
+    pkill -f http && exit 0 
+elif [ "$choice" ]; then
+    pkill -f http || echo "mpv wasn't running." 
+    url=$(printf '%s\n' "${radio_stations["${choice}"]}")
+    notify-send -e -t 1800 "Radio" "Playing: $choice."
+    mpv --volume=100 "$url"
+else
+    echo "Program terminated." && exit 0
+fi

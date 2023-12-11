@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+choice=$(printf 'Algiers\nParis\nBerlin\nBrussels' | ${DMENU} 'Get weather:' "$@")
+choice="$(echo $choice | sed "s/ /-/g")"
+
+if [ "$choice" ]; then
+    day=$(printf 'Today\nTomorrow\nOvermorrow' | $DMENU 'Enter your query:') || exit
+    case "${day}" in
+        'Today')
+    url="https://wttr.in/${choice}?m1&lang=fr"
+        ;;
+        'Tomorrow')
+    url="https://wttr.in/${choice}?m2&lang=fr"
+        ;;
+        'Overmorrow')
+    url="https://wttr.in/${choice}?m3&lang=fr"
+        ;;
+    esac
+    alacritty --hold -o font.normal.family="Ubuntu Mono" font.size="11" -e sh -c "curl -s '$url' | awk '!/Suivez/ && !/Emplacement/' | sed '1,7 s/^/                                             /' | sed 's/^/     /' | head -n -1 "
+else
+    echo "Program terminated." && exit 0
+fi

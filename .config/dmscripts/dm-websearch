@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+
+
+choice=$(printf '%s\n' "${!websearch[@]}" | sort | ${DMENU} 'Edit config:' "$@")
+
+if [ "$choice" ]; then
+    url=$(printf '%s\n' "${websearch["${choice}"]}")
+    query=$(printf '%s\n' | $DMENU 'Enter your query:') || exit
+    $DMBROWSER "$url""$query"
+else
+    echo "Program terminated." && exit 0
+fi

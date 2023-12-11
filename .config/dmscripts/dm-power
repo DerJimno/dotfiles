@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+logout() {
+    pkill xmonad || echo "Cannot kill Xmonad"
+}
+
+choice=$(printf 'Suspend\nLog out\nReboot\nPower off' | ${DMENU} 'Power:' "$@")
+if [ "$choice" ]; then
+    case "${choice}" in
+        'Suspend')
+            alacritty -e sudo systemctl suspend
+        ;;
+        'Log out')
+            logout
+        ;;
+        'Power off')
+            alacritty -e sudo systemctl poweroff
+        ;;
+        'Reboot')
+            alacritty -e sudo systemctl reboot 
+        ;;
+    esac
+else
+    echo "Program terminated." && exit 0
+fi

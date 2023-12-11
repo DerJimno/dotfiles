@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+
+
+choice=$(printf '%s\n' "${!bookmarks[@]}" | sort | ${DMENU} 'Open a Bookmark:' "$@")
+
+
+if [ "$choice" ]; then
+    url=$(printf '%s\n' "${bookmarks["${choice}"]}")
+    $DMBROWSER "$url"
+else
+    echo "Program terminated." && exit 0
+fi
