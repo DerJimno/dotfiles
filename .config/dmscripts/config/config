@@ -80,10 +80,10 @@ color_scheme[OceanicNext]="oceanic-next"
 color_scheme[TokyoNight]="tokyo-night"
 
 declare -Ag font_size
-font_size[Comic Mono]="10 10"
-font_size[Fira Code]="10 9"
+font_size[Comic Mono]="10 9"
+font_size[Fira Code]="9.5 9"
 font_size[Cascadia Code]="10 9.5"
-font_size[Hack]="10 9"
+font_size[Hack]="9.5 9"
 font_size[Inconsolata]="11 10"
 font_size[Ubuntu Mono]="11 11"
 font_size[Terminus]="11 9.5"
