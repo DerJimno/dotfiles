@@ -6,7 +6,7 @@ case "$1" in
 'Monokai')        gtk="Monokai";;
 'Nord')           gtk="Nord";;
 'SolarizedDark')  gtk="Numix Solarized";;
-'SolarizedLight') gtk="Arc-Lighter";;
+'SolarizedLight') gtk="Arc";;
 esac
 
 echo "$gtk"
