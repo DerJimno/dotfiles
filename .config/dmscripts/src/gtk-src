@@ -5,8 +5,8 @@ case "$1" in
 'OceanicNext')    gtk="Oceanic-Next";;
 'Monokai')        gtk="Monokai";;
 'Nord')           gtk="Nord";;
-'SolarizedDark')  gtk="Numix Solarized";;
-'SolarizedLight') gtk="Arc";;
+'SolarizedDark')  gtk="Numix-Solarized";;
+'SolarizedLight') gtk="Numix-Solarized-Light";;
 esac
 
 echo "$gtk"
