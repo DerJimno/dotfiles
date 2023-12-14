@@ -1,10 +1,9 @@
-
 Config { 
    -- appearance
      font = "Ubuntu Mono Bold 11"
    , additionalFonts = [ "Monoki Nerd Font 11"
                        , "Monoki Nerd Font 16" 
-		               ]
+                       ]
    , bgColor =      "#1a1b26"
    , fgColor =      "#a9b1d6"
    , position =     TopH 22
