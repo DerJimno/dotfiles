@@ -21,7 +21,7 @@ if [ "$choice" = "kill" ]; then
 elif [ "$choice" ]; then
     pkill -f http || echo "mpv wasn't running." 
     url="${podcast["${choice}"]}"
-    notify-send -e -t 1800 "Podcast" "Playing: $choice."
+    notify-send -i .icons/notif/podcast.svg -e -t 1800 "Podcast" "Playing: $choice."
     mpv --volume=100 "$url"
 else
     echo "Program terminated." && exit 0
