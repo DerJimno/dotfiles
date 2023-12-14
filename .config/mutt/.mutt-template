@@ -1,0 +1,22 @@
+# vim: filetype=neomuttrc
+set editor='nvim'
+set mail_check = 5
+set new_mail_command = 'notify-send -i .icons/notif/mail.svg "New Mail\!" "%?n?%n new mail(s) in mail_address account.?"'
+
+# muttrc file for mail_address 
+set realname = "real_name"
+set from = "mail_address"
+set sendmail = "msmtp -a mail_address"
+set folder = "$HOME/.local/share/mail/mail_address"
+set header_cache = "$HOME/.cache/mutt-wizard/mail_address/headers"
+set message_cachedir = "$HOME/.cache/mutt-wizard/mail_address/bodies"
+set mbox_type = Maildir
+set hostname = "gmail.com"
+source /usr/share/mutt-wizard/switch.muttrc
+
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+set record = /dev/null
+
+mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts"  "=[Gmail]/Spam" "=[Gmail]/Trash"
