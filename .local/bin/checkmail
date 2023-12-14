@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $1 -lt 5 ] ; then
+	echo "Error! Please use a number greater than 5"
+else	
+	while true; do 
+	mbsync -c .mbsyncrc -a > /dev/null 2>&1
+	notmuch new > /dev/null 2>&1
+	sleep $1
+	done
+fi

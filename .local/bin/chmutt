@@ -1,0 +1,10 @@
+#!/bin/sh
+
+killall checkmail > /dev/null 2>&1
+if [ $1 -lt 5 ] ; then
+	echo "Error! Please use a number greater than 5"
+else
+	.local/bin/checkmail $1 &
+	neomutt
+	killall checkmail > /dev/null 2>&1
+fi
