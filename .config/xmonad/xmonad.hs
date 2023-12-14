@@ -271,7 +271,6 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "setxkbmap -option caps:none &"
   spawnOnce "xsettingsd &"
-  -- spawnOnOnce "chat" "alacritty -e neomutt"
 
 -----------------------------------------------------------------------
 -- fullscreen window
