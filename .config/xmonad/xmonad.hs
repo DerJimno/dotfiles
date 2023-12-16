@@ -271,6 +271,7 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "setxkbmap -option caps:none &"
   spawnOnce "xsettingsd &"
+  spawnOnce "pcloud &"
 
 -----------------------------------------------------------------------
 -- fullscreen window
