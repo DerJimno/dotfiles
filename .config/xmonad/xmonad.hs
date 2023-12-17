@@ -243,8 +243,7 @@ myManageHook = composeAll
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
-    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG"
-                                        --> doCenterFloat 
+    , isDialog                          --> doCenterFloat 
     --, resource  =? "desktop_window"     --> doIgnore
     --, resource  =? "kdesktop"         --> doIgnore 
     ]
