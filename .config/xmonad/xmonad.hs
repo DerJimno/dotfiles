@@ -106,8 +106,8 @@ myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
-dialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
-passBox = doRectFloat (W.RationalRect 0.35 0.35 0.25 0.25) 
+doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
+doPassBox = doRectFloat (W.RationalRect 0.35 0.35 0.25 0.25) 
 
 
 ------------------------------------------------------------------------
@@ -197,8 +197,8 @@ myKeys conf = mkKeymap conf $
     , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- Dmenu USB mount/unmount
     , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- Dmenu Colorscheme 
     , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- Dmenu Font 
-    , ("M-p p"             , spawnAndDo passBox "~/.config/dmscripts/dm-power")     -- Dmenu Power 
-    , ("M-p w"             , spawnAndDo dialogBox "~/.config/dmscripts/dm-weather") -- Dmenu Check weather
+    , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- Dmenu Power 
+    , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- Dmenu Check weather
     , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'") -- Dmenu USB mount/unmount
 
     -- Parameters
