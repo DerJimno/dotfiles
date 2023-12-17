@@ -107,7 +107,6 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 dialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
-downloadBox = doRectFloat (W.RationalRect 0.24 0.3 0.5 0.5) 
 passBox = doRectFloat (W.RationalRect 0.35 0.35 0.25 0.25) 
 
 
@@ -244,7 +243,8 @@ myManageHook = composeAll
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
-    , title     =? "Save File"          --> downloadBox
+    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG"
+                                        --> doCenterFloat 
     --, resource  =? "desktop_window"     --> doIgnore
     --, resource  =? "kdesktop"         --> doIgnore 
     ]
