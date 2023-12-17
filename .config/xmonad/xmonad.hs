@@ -38,10 +38,11 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ToggleLayouts
 
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit , decreaseLimit)
-import XMonad.Layout.MultiToggle
+--import XMonad.Layout.MultiToggle
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.Renamed
 import XMonad.Layout.WindowNavigation
@@ -108,7 +109,6 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 
 doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
 doPassBox = doRectFloat (W.RationalRect 0.35 0.35 0.25 0.25) 
-
 
 ------------------------------------------------------------------------
 -- Add Spacing
@@ -178,7 +178,7 @@ myKeys conf = mkKeymap conf $
     , ("M-k"               , windows W.focusUp)          -- focus on previous window
     , ("M-m"               , windows W.focusMaster)      -- focus on master window
     , ("M-S-c"             , kill)                       -- kill Window
-    , ("M-S-f"             , toggleFull)                 -- fullscreen Window
+     , ("M-S-f"             , sendMessage (Toggle "Full")) -- fullscreen Window
     , ("M-S-j"             , windows W.swapDown)         -- Swap to next window
     , ("M-S-k"             , windows W.swapUp)           -- Swap to previous window
     , ("M-S-<End>"         , spawn "xset dpms force off")-- Shuts down screen
@@ -222,12 +222,12 @@ myKeys conf = mkKeymap conf $
 ------------------------------------------------------------------------
 -- Layouthook:
 ------------------------------------------------------------------------
-myLayout = avoidStruts $ withBorder myBorderWidth $ tall 
+myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
+                                                    tall 
                                                 ||| Mirror tall
                                                 ||| grid
                                                 ||| Accordion
-                                                ||| spirals                                
-
+                                                ||| spirals)
 
 ------------------------------------------------------------------------
 -- Manage Hook:
@@ -272,15 +272,6 @@ myStartupHook = do
   spawnOnce "setxkbmap -option caps:none &"
   spawnOnce "xsettingsd &"
   spawnOnce "pcloud &"
-
------------------------------------------------------------------------
--- fullscreen window
------------------------------------------------------------------------
-toggleFull = withFocused (\windowId -> do
-    { floats <- gets (W.floating . windowset);
-        if windowId `M.member` floats
-        then withFocused $ windows . W.sink
-        else withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1) })  
 
 ------------------------------------------------------------------------
 -- Main Hook
