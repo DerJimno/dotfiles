@@ -268,7 +268,7 @@ myStartupHook = do
   spawnOnce "picom &"
   spawnOnce "volumeicon &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
-  spawnOnce "setxkbmap -option caps:none &"
+  spawnOnce "setxkbmap -option caps:escape &"
   spawnOnce "xsettingsd &"
   spawnOnce "pcloud &"
 
