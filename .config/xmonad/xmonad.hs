@@ -270,7 +270,7 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "setxkbmap -option caps:escape &"
   spawnOnce "xsettingsd &"
-  spawnOnce "pcloud &"
+  spawnOnce "applications/pcloud &"
 
 ------------------------------------------------------------------------
 -- Main Hook
