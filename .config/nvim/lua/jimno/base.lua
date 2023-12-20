@@ -7,7 +7,7 @@ o.relativenumber = true
 o.numberwidth = 2
 o.singcolumn = "yes"
 o.cursorline = true
-
+o.clipboard = "unnamedplus"
 
 o.expandtab = true
 o.smarttab = true
@@ -23,7 +23,6 @@ o.softtabstop = -1
 o.ignorecase = true
 o.smartcase = true
 
-
 o.history = 50
 
 -- Undo and backup options
@@ -35,3 +34,4 @@ o.swapfile = false
 -- Map <leader> to space
 g.mapleader = " "
 g.maplocalleader = " "
+
