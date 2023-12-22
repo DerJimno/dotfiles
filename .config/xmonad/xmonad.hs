@@ -167,7 +167,7 @@ myKeys conf = mkKeymap conf $
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
     , ("M-S-l"             , spawn "libreoffice")        -- Launch Libreoffice
-    , ("M-S-m"             , spawnOn "chat" "alacritty -e .local/bin/chmutt 10") -- Launch Neomutt
+    , ("M-S-m"             , spawnOn "chat" "alacritty -e neomutt") -- Launch Neomutt
 
     -- Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
