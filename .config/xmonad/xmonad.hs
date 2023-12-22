@@ -108,7 +108,7 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
-doPassBox = doRectFloat (W.RationalRect 0.35 0.35 0.25 0.25) 
+doPassBox = doRectFloat (W.RationalRect 0.4 0.45 0.2 0.05) 
 
 ------------------------------------------------------------------------
 -- Add Spacing
