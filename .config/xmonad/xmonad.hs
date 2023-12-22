@@ -163,7 +163,7 @@ myKeys conf = mkKeymap conf $
 
     -- launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
-    , ("M-<Return>"        , spawn "alacritty")          -- launch Alacritty
+    , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
     , ("M-S-l"             , spawn "libreoffice")        -- Launch Libreoffice
