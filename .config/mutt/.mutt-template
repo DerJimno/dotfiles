@@ -2,6 +2,7 @@
 set editor='nvim'
 set mail_check = 5
 set new_mail_command = 'notify-send -i .icons/notif/mail.svg "New Mail\!" "%?n?%n new mail(s) in mail_address account.?"'
+macro index o "<shell-escape>mailsync mail_address<enter>" "sync mail_address"
 
 # muttrc file for mail_address 
 set realname = "real_name"
