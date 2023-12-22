@@ -159,21 +159,21 @@ myKeys conf = mkKeymap conf $
  
     -- XMoanad
     [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
-    , ("M-S-q"             , io (exitWith ExitSuccess)) -- Quit xmonad.
+    , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
 
     -- launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
     , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
-    , ("M-S-l"             , spawn "libreoffice")        -- Launch Libreoffice
-    , ("M-S-m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- Launch Neomutt
+    , ("M-S-l"             , spawn "libreoffice")        -- launch Libreoffice
+    , ("M-S-m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
     , ("M-S-<Tab>"         , setLayout $ XMonad.layoutHook conf) -- reset Layout
 
-    , ("M-S-r"             , refresh)                    -- Correct window-size
+    , ("M-S-r"             , refresh)                    -- correct window-size
     , ("M-j"               , windows W.focusDown)        -- focus on next window
     , ("M-k"               , windows W.focusUp)          -- focus on previous window
     , ("M-m"               , windows W.focusMaster)      -- focus on master window
@@ -188,25 +188,25 @@ myKeys conf = mkKeymap conf $
     , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- take Screenshot + save to Clip
      
     -- Dmenu Scripts
-    , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- Dmenu config files
-    , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- Dmenu web search 
-    , ("M-p r"             , spawn "~/.config/dmscripts/dm-radio")       -- Dmenu online Radio
-    , ("M-p g"             , spawn "~/.config/dmscripts/dm-podcast")     -- Dmenu online Podcast
-    , ("M-p b"             , spawn "~/.config/dmscripts/dm-bookmarks")   -- Dmenu Bookmarks
-    , ("M-p n"             , spawn "~/.config/dmscripts/dm-notes")       -- Dmenu Notes
-    , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- Dmenu USB mount/unmount
-    , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- Dmenu Colorscheme 
-    , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- Dmenu Font 
-    , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- Dmenu Power 
-    , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- Dmenu Check weather
-    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'") -- Dmenu USB mount/unmount
+    , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
+    , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search 
+    , ("M-p r"             , spawn "~/.config/dmscripts/dm-radio")       -- dmenu online Radio
+    , ("M-p g"             , spawn "~/.config/dmscripts/dm-podcast")     -- dmenu online Podcast
+    , ("M-p b"             , spawn "~/.config/dmscripts/dm-bookmarks")   -- dmenu Bookmarks
+    , ("M-p n"             , spawn "~/.config/dmscripts/dm-notes")       -- dmenu Notes
+    , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- dmenu USB mount/unmount
+    , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- dmenu Colorscheme 
+    , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
+    , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- dmenu Power 
+    , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
+    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'") -- dmenu USB mount/unmount
 
     -- Parameters
     , ("<XF86MonBrightnessUp>"  , spawn "brillo -q -A 5") -- increase Brightness
     , ("<XF86MonBrightnessDown>", spawn "brillo -q -U 5") -- decrease Brightness
     
-    , ("<XF86AudioRaiseVolume>" , spawn "amixer -c 1 sset Master 5%+") -- Volume up
-    , ("<XF86AudioLowerVolume>" , spawn "amixer -c 1 sset Master 5%-") -- Volume down
+    , ("<XF86AudioRaiseVolume>" , spawn "amixer -c 1 sset Master 5%+") -- volume up
+    , ("<XF86AudioLowerVolume>" , spawn "amixer -c 1 sset Master 5%-") -- volume down
     
     -- switch WS with 
     , ("M-<R>"             , nextWS) -- M + -> to next Workspace
