@@ -9,7 +9,7 @@ icon_theme=$(.config/dmscripts/src/icon-src "$choice")
 
 if [ "$choice" ]; then
     ## Alacritty
-    sed -i "s/themes\/.*/themes\/${color_scheme[$choice]}.yaml/g" "$HOME"/.config/alacritty/alacritty.yml || echo "Error setting Alacritty colors"
+    sed -i "s/themes\/.*/themes\/${color_scheme[$choice]}.toml\",\]/g" "$HOME"/.config/alacritty/alacritty.toml || echo "Error setting Alacritty colors"
     # Nvim Theme
     sed -i "s/base16.*/base16-$vim_theme/g" "$HOME"/.local/share/nvim/colorscheme-file || echo "Cannot modify colorscheme-file" /
     # Gtk Theme + Icons
