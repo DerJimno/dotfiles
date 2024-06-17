@@ -1,58 +1,48 @@
-local status, packer = pcall(require, "packer")
-if not status then
-	print("Packer is not installed")
-	return
+-- Plugins (Lazy-Nvim Plugin Manager)
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Reloads Neovim after whenever you save plugins.lua
-vim.cmd([[
-    augroup packer_user_config
-      autocmd!
-     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup END
-]])
-
-
-packer.startup(function(use)
-	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
-
-    -- use("nvim-tree/nvim-web-devicons") 
-    -- A better statusline
-	use {
-      "nvim-lualine/lualine.nvim", -- A better statusline
-      requires = {'nvim-tree/nvim-web-devicons', opt = true }
-      }
-      require('lualine').setup({
-          options = {
-          theme = "solarized_dark"
-          }
-      })
-
-	-- File management --
-	use("vifm/vifm.vim")
-
-	-- Tim Pope Plugins --
-	use("tpope/vim-surround")
-
-	-- Syntax Highlighting and Colors --
-	use("ap/vim-css-color")
-	-- use("nickeb96/fish.vim")
+ 
+local plugins = {
+  'vifm/vifm.vim',        -- File Manager 
+  'tpope/vim-surround',
+  'ap/vim-css-color',     -- Syntax Highlighting and Colors --
+  -- 'nickeb96/fish.vim',
     
-    -- Telescope
-	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope.nvim")
-    use("nvim-treesitter/nvim-treesitter")
+  -- Statusline
+  {
+    'nvim-lualine/lualine.nvim', 
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = { 
+      theme = 'solarized_dark',
+    },
+  },
+  
+   -- Telescope
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'nvim-treesitter/nvim-treesitter',
 
-	-- Emoji Plugins --
-	use("junegunn/vim-emoji")
+  -- Emoji Plugins --
+  'junegunn/vim-emoji',
 
-	-- Colorschemes --
-	use("RRethy/nvim-base16")
-    use("eriedaberrie/colorscheme-file.nvim") -- instant colorscheme
+  -- Colorschemes --
+  'RRethy/nvim-base16',
+  'eriedaberrie/colorscheme-file.nvim', -- instant colorscheme
+}
 
-	if packer_bootstrap then
-		packer.sync()
-	end
-end)
+local opts = {}
 
+
+require("lazy").setup(plugins, opts)
