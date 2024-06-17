@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case "$1" in
-'TokyoNight')     vim="tokyo-night-theme";;
+'TokyoNight')     vim="tokyo-night-dark";;
 'OceanicNext')    vim="oceanicnext";;
 'Monokai')        vim="monokai";;
 'Nord')           vim="nord";;
