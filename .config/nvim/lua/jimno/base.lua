@@ -5,7 +5,7 @@ o.termguicolors = true
 o.number = true
 o.relativenumber = true
 o.numberwidth = 2
-o.singcolumn = "yes"
+-- o.singcolumn = "yes"
 o.cursorline = true
 o.clipboard = "unnamedplus"
 
