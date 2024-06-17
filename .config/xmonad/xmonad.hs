@@ -178,7 +178,7 @@ myKeys conf = mkKeymap conf $
     , ("M-k"               , windows W.focusUp)          -- focus on previous window
     , ("M-m"               , windows W.focusMaster)      -- focus on master window
     , ("M-S-c"             , kill)                       -- kill Window
-     , ("M-S-f"             , sendMessage (Toggle "Full")) -- fullscreen Window
+    , ("M-S-f"             , sendMessage (Toggle "Full")) -- fullscreen Window
     , ("M-S-j"             , windows W.swapDown)         -- Swap to next window
     , ("M-S-k"             , windows W.swapUp)           -- Swap to previous window
     , ("M-S-<End>"         , spawn "xset dpms force off")-- Shuts down screen
@@ -199,7 +199,7 @@ myKeys conf = mkKeymap conf $
     , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
     , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- dmenu Power 
     , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
-    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'") -- dmenu USB mount/unmount
+    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
 
     -- Parameters
     , ("<XF86MonBrightnessUp>"  , spawn "brillo -q -A 5") -- increase Brightness
