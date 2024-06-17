@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-amixer -c 1 sget Master | awk '$0~/%/{print $4}' | tr -d '[]'
+pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | grep -v '^$'
