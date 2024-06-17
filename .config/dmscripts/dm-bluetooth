@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+choice=$(printf 'ON\nOFF\nConnect' | ${DMENU} 'Bluetooth:' "$@")
+
+
+if [ "$choice" ]; then
+  case "${choice}" in
+    'ON')
+      bluetoothctl power on
+    ;;
+    'OFF')
+      bluetoothctl power off 
+    ;;
+    'Connect')
+      device=$(bluetoothctl devices | awk '{ for (i=3; i<=NF; i++) printf "%s ", $i; print ""}' | sed 's/ *$//' | ${DMENU} "Devices:") 
+      mac=$(bluetoothctl devices | grep "$device" | awk '{print $2}') 
+      bluetoothctl power on && bluetoothctl connect $mac 
+    ;;
+  esac
+
+else
+    echo "Program terminated." && exit 0
+fi
