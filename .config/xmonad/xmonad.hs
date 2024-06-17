@@ -205,8 +205,8 @@ myKeys conf = mkKeymap conf $
     , ("<XF86MonBrightnessUp>"  , spawn "brillo -q -A 5") -- increase Brightness
     , ("<XF86MonBrightnessDown>", spawn "brillo -q -U 5") -- decrease Brightness
     
-    , ("<XF86AudioRaiseVolume>" , spawn "amixer -c 1 sset Master 5%+") -- volume up
-    , ("<XF86AudioLowerVolume>" , spawn "amixer -c 1 sset Master 5%-") -- volume down
+    , ("<XF86AudioRaiseVolume>" , spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%") -- volume up
+    , ("<XF86AudioLowerVolume>" , spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%") -- volume down
     
     -- switch WS with 
     , ("M-<R>"             , nextWS) -- M + -> to next Workspace
