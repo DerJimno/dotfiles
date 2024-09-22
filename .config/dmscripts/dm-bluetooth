@@ -8,6 +8,7 @@ choice=$(printf 'ON\nOFF\nConnect' | ${DMENU} 'Bluetooth:' "$@")
 if [ "$choice" ]; then
   case "${choice}" in
     'ON')
+      alacritty -e sudo systemctl restart bluetooth
       bluetoothctl power on
     ;;
     'OFF')
