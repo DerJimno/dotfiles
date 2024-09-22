@@ -197,7 +197,7 @@ myKeys conf = mkKeymap conf $
     , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- dmenu USB mount/unmount
     , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- dmenu Colorscheme 
     , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
-    , ("M-p y"             , spawn "~/.config/dmscripts/dm-bluetooth")   -- dmenu Bluetooth 
+    , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth") -- dmenu Bluetooth 
     , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- dmenu Power 
     , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
     , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
