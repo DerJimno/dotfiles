@@ -15,7 +15,6 @@ alias ..='cd ..'
 alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
-alias aura='sudo aura'
 alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=/$HOME'
 
 ########## Exports ###########
