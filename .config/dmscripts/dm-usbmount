@@ -56,13 +56,19 @@ unmount() {
     fi
 }
 
-choice=$(printf 'Mount USB\nUnmount USB\nQuit' | ${DMENU} 'USB:' )
+choice=$(printf 'Mount Phone\nUnmount Phone\nMount USB\nUnmount USB\nQuit' | ${DMENU} 'USB:' )
 case "$choice" in
 'Mount USB')
     mount
 ;;
 'Unmount USB')
     unmount
+;;
+'Mount Phone')
+    jmtpfs ~/mnt
+;;
+'Unmount Phone')
+    umount ~/mnt
 ;;
 'Quit')
     echo "Programm Terminated." && exit 0
