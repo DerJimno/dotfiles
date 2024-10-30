@@ -272,6 +272,7 @@ myStartupHook = do
   spawnOnce "setxkbmap -option caps:escape &"
   spawnOnce "xsettingsd &"
   spawnOnce "applications/pcloud &"
+  spawnOnce "synclient TapButton1=1"
 
 ------------------------------------------------------------------------
 -- Main Hook
