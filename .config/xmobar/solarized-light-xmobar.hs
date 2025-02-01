@@ -40,7 +40,7 @@ Config {
         , Run Com ".local/bin/pacup" [] "pacup" 3600
         -- keyboard layout indicator
         , Run Com "echo" ["<fn=1>\xf030c</fn> "] "kbdicon" 3600
-        , Run Kbd            [ ("fr"  ,"<fn=2>\xf0af3</fn>")
+        , Run Kbd            [ ("us"  ,"<fn=2>\xf0af2</fn>")
                              , ("ara" ,"<fn=2>\xf0aee</fn>")
                              ]
         ]
