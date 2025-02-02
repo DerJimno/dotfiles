@@ -2,8 +2,8 @@ Config {
    -- appearance
      font = "Ubuntu Mono Bold 11"
    , additionalFonts = [ "Monoki Nerd Font 11"
-                       , "Monoki Nerd Font 16" 
                        , "Monoki Nerd Font 25"
+                       , "Monoki Nerd Font 16" 
                        ]
    , bgColor =      "#002b36"
    , fgColor =      "#839496"
@@ -40,9 +40,9 @@ Config {
         , Run Com ".local/bin/pacup" [] "pacup" 3600
         -- keyboard layout indicator
         , Run Com "echo" ["<fn=1>\xf030c</fn> "] "kbdicon" 3600
-        , Run Com "echo" ["<fn=3>\xe739</fn>"] "logo" 36000 
-        , Run Kbd            [ ("us"  ,"<fn=2>\xf0af2</fn>")
-                             , ("ara" ,"<fn=2>\xf0aee</fn>")
+        , Run Com "echo" ["<fn=2>\xe739</fn>"] "logo" 36000 
+        , Run Kbd            [ ("us"  ,"<fn=3>\xf0af2</fn>")
+                             , ("ara" ,"<fn=3>\xf0aee</fn>")
                              ]
         ]
         -- layout
