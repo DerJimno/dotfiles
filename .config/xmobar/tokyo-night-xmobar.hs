@@ -14,7 +14,6 @@ Config {
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
    , pickBroadest =     False   -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
-   , iconRoot = ".config/xmonad/xpm/" -- default: "." 
 
    , commands = 
         [
