@@ -7,7 +7,7 @@ Config {
 		               ]
    , bgColor =      "#2D2A2E"
    , fgColor =      "#fff1f3"
-   , position =     TopH 22
+   , position =     TopH 20
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
