@@ -38,6 +38,8 @@ Config {
         -- pacupdate
         , Run Com "echo" ["<fn=1>\xf0b7e</fn>"] "pacupicon" 3600
         , Run Com ".local/bin/pacup" [] "pacup" 3600
+        , Run Com "echo" ["<fn=1>\xf2c9</fn> "] "cpu-temp-icon" 3600
+        , Run Com ".local/bin/cpu-temp" [] "cpu-temp" 20 
         -- keyboard layout indicator
         , Run Com "echo" ["<fn=1>\xf030c</fn> "] "kbdicon" 3600
         , Run Com "echo" ["<fn=2>\xe739</fn>"] "logo" 36000 
@@ -48,5 +50,5 @@ Config {
         -- layout
         , sepChar =  "%"
         , alignSep = "}{"
-    , template = " <fc=#6699cc>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#29414f>%pacupicon% %pacup%</fc> | <fc=#ec5f67>%cpu%</fc> | <fc=#99c794>%disku%</fc> | <fc=#fac863>%memory%</fc> | <fc=#6699cc>%enp34s0%</fc> | <fc=#c594c5>%date%</fc> | <fc=#5fb3b3>%volicon%%vol%</fc> | <fc=#65737e>%kbdicon%%kbd%</fc> "
+    , template = " <fc=#6699cc>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#29414f>%pacupicon% %pacup%</fc> | <fc=#ec5f67>%cpu%</fc> | <fc=#ec5f67>%cpu-temp-icon%%cpu-temp%</fc> | <fc=#99c794>%disku%</fc> | <fc=#fac863>%memory%</fc> | <fc=#6699cc>%enp34s0%</fc> | <fc=#c594c5>%date%</fc> | <fc=#5fb3b3>%volicon%%vol%</fc> | <fc=#65737e>%kbdicon%%kbd%</fc> "
 
