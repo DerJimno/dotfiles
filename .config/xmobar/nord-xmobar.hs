@@ -18,7 +18,7 @@ Config {
    , commands = 
         [
         -- network activity monitor (dynamic interface resolution)
-          Run Network "wlp2s0" ["-t", "<fn=1>\xf0aa</fn>  <tx>kb <fn=1>\xf0ab</fn>  <rx>kb"] 20
+          Run Network "enp34s0" ["-t", "<fn=1>\xf0aa</fn> <tx>kb <fn=1>\xf0ab</fn> <rx>kb"] 20
         -- cpu activity monitor
         , Run Cpu [ "-t", "<fn=1>\xf4bc</fn> <total>%", "-H", "50", "--high", "red"] 20
         -- get workspaces
@@ -48,5 +48,5 @@ Config {
         -- layout
         , sepChar =  "%"
         , alignSep = "}{"
-    , template = " <fc=#81A1C1>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#4C566A>%pacupicon% %pacup%</fc> | <fc=#BF616A>%cpu%</fc> | <fc=#A3BE8C>%disku%</fc> | <fc=#EBCB8B>%memory%</fc> | <fc=#81A1C1>%wlp2s0%</fc> | <fc=#B48EAD>%date%</fc> | <fc=#88C0D0>%volicon%%vol%</fc> | <fc=#E5E9F0>%kbdicon%%kbd%</fc> "
+    , template = " <fc=#81A1C1>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#4C566A>%pacupicon% %pacup%</fc> | <fc=#BF616A>%cpu%</fc> | <fc=#A3BE8C>%disku%</fc> | <fc=#EBCB8B>%memory%</fc> | <fc=#81A1C1>%enp34s0%</fc> | <fc=#B48EAD>%date%</fc> | <fc=#88C0D0>%volicon%%vol%</fc> | <fc=#E5E9F0>%kbdicon%%kbd%</fc> "
 
