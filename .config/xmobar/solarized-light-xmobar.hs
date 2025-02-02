@@ -3,6 +3,7 @@ Config {
      font = "Ubuntu Mono Bold 11"
    , additionalFonts = [ "Monoki Nerd Font 11"
                        , "Monoki Nerd Font 16" 
+                       , "Monoki Nerd Font 25"
                        ]
    , bgColor =      "#002b36"
    , fgColor =      "#839496"
@@ -40,6 +41,7 @@ Config {
         , Run Com ".local/bin/pacup" [] "pacup" 3600
         -- keyboard layout indicator
         , Run Com "echo" ["<fn=1>\xf030c</fn> "] "kbdicon" 3600
+        , Run Com "echo" ["<fn=3>\xe739</fn>"] "logo" 36000 
         , Run Kbd            [ ("us"  ,"<fn=2>\xf0af2</fn>")
                              , ("ara" ,"<fn=2>\xf0aee</fn>")
                              ]
@@ -47,5 +49,5 @@ Config {
         -- layout
         , sepChar =  "%"
         , alignSep = "}{"
-    , template = "<icon=light.xpm/>|  %UnsafeStdinReader% }{ <fc=#cb4b16>%pacupicon% %pacup%</fc> | <fc=#859900>%cpu%</fc> | <fc=#268bd2>%disku%</fc> | <fc=#b58900>%memory%</fc> | <fc=#d33682>%wlp2s0%</fc> | <fc=#2aa198>%date%</fc> | <fc=#dc322f>%volicon% %vol%</fc> |  <fc=#586e75>%kbdicon% %kbd%</fc> "
+    , template = " <fc=#d33682>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#cb4b16>%pacupicon% %pacup%</fc> | <fc=#859900>%cpu%</fc> | <fc=#268bd2>%disku%</fc> | <fc=#b58900>%memory%</fc> | <fc=#d33682>%wlp2s0%</fc> | <fc=#2aa198>%date%</fc> | <fc=#dc322f>%volicon% %vol%</fc> |  <fc=#586e75>%kbdicon% %kbd%</fc> "
 
