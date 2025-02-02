@@ -303,10 +303,10 @@ main = do
         logHook            = dynamicLogWithPP xmobarPP
           { ppOutput  = \x -> hPutStrLn xmproc0 x
                           -- >> hPutStrLn xmproc1 x
-          , ppCurrent = xmobarColor color05 "" . wrap ("<box type=Top width=2 mb=2 color=" ++ color06 ++ ">") "</box>" 
+          , ppCurrent = xmobarColor color06 "" . wrap ("<box type=Top width=2 mb=2 color=" ++ color06 ++ ">") "</box>" 
           , ppVisible = xmobarColor color04 "" . clickable
-          , ppHidden  = xmobarColor color05 "" . clickable
-          , ppHiddenNoWindows = xmobarColor color06 "" . clickable
+          , ppHidden  = xmobarColor color06 "" . clickable
+          , ppHiddenNoWindows = xmobarColor color05 "" . clickable
           , ppTitle   = xmobarColor color11 "" . shorten 20
           , ppSep     = "<fc=" ++ color11 ++ "> | </fc>"
           , ppWsSep   = "  "
