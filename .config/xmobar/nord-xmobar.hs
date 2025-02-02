@@ -1,7 +1,7 @@
 Config { 
    -- appearance
      font = "Ubuntu Mono Bold 11"
-   , additionalFonts = [ "Monoki Nerd Font 11"
+   , additionalFonts = [ "Monoki Nerd Font 15"
                        , "Monoki Nerd Font 25"
                        , "Monoki Nerd Font 16"
 		               ]
