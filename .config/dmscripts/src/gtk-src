@@ -5,7 +5,7 @@ case "$1" in
 'OceanicNext')    gtk="Oceanic-Next";;
 'Monokai')        gtk="Monokai";;
 'Nord')           gtk="Nord";;
-'SolarizedDark')  gtk="Numix-Solarized";;
+'SolarizedDark')  gtk="Solarized-Dark";;
 'SolarizedLight') gtk="Numix-Solarized-Light";;
 esac
 
