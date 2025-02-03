@@ -27,6 +27,7 @@ confedit_list[dmscript]="$HOME/.config/dmscripts/config/config"
 
 # Radio Stations
 declare -Ag radio_stations 
+radio_stations[Quran Station]="https://my.radioalgerie.dz/player/coran.html"
 radio_stations[Lofi]="http://192.95.39.65:5607"
 radio_stations[The Groove]="http://http://uk7.internet-radio.com:8352/"
 radio_stations[Stratford]="http://us2.internet-radio.com:8151/"
