@@ -5,8 +5,8 @@ case "$1" in
 'OceanicNext')    icon="Breeze-Nord-Dark-Icons";;
 'Monokai')        icon="Surfn-Numix";;
 'Nord')           icon="Surfn-Papirus-Grey";;
-'SolarizedDark')  icon="Solarized-Material-Magenta";;
-'SolarizedLight') icon="Surfn-Tela";;
+'SolarizedDark')  icon="Solarized-Deluxe-Iconpack";;
+'SolarizedLight') icon="Solarized-Deluxe-Iconpack";;
 esac
 
 echo "$icon"
