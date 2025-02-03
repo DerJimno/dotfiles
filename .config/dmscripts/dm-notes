@@ -21,10 +21,18 @@ case "$choice" in
 'Delete note')
     note_del=$(${DMENU} 'Delete:' <"documents/notes/notes")
     # grep should always returns 0 regardless what happens.
-    grep -v "^$(echo "${note_del}" | sed -e 's/\[/\\[/g;s/\]/\\]/g')\$" "documents/notes/notes" >"/tmp/dmnote" || true
-    [ -n "${note_del}" ] && cp -f "/tmp/dmnote" "documents/notes/notes" && notify-send -i .icons/notif/delete.svg -u normal "Note deleted" "${note_del}"
+    yes_no=$(printf 'Yes\nNo' | ${DMENU} "Do you really want to delete '${note_del}':")
+    case "$yes_no" in
+    'Yes')
+        grep -v "^$(echo "${note_del}" | sed -e 's/\[/\\[/g;s/\]/\\]/g')\$" "documents/notes/notes" >"/tmp/dmnote" || true
+        [ -n "${note_del}" ] && cp -f "/tmp/dmnote" "documents/notes/notes" && notify-send -i .icons/notif/delete.svg -u normal "Note deleted" "${note_del}"
+        ;;
+    'No')
+        echo "Program Terminated." && exit 0
+        ;;
+    esac
     ;;
 'Quit')
-        echo "Program Terminated." && exit 0
+    echo "Program Terminated." && exit 0
     ;;
 esac
