@@ -166,12 +166,13 @@ myKeys conf = mkKeymap conf $
     , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
-    , ("M-l"             , spawn "libreoffice")        -- launch Libreoffice
+    , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
     , ("M-S-m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
     , ("M-S-<Tab>"         , setLayout $ XMonad.layoutHook conf) -- reset Layout
+    , ("M-C-<Tab>"         , withFocused $ windows . W.sink)     -- back from Float to Layouts
 
     , ("M-S-r"             , refresh)                    -- correct window-size
     , ("M-j"               , windows W.focusDown)        -- focus on next window
