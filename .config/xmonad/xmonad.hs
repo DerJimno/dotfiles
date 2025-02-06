@@ -156,11 +156,11 @@ spirals  = renamed [Replace "spirals"]
 ------------------------------------------------------------------------
 myKeys conf = mkKeymap conf $  
  
-    -- XMoanad
+    -- KB_group XMoanad
     [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
     , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
 
-    -- launch Apps
+    -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
     , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
@@ -168,7 +168,7 @@ myKeys conf = mkKeymap conf $
     , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
     , ("M-S-m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
-    -- Actions    
+    -- KB_group Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
     , ("M-S-<Tab>"         , setLayout $ XMonad.layoutHook conf) -- reset Layout
     , ("M-C-<Tab>"         , withFocused $ windows . W.sink)     -- back from Float to Layouts
@@ -183,24 +183,27 @@ myKeys conf = mkKeymap conf $
     , ("M-S-k"             , windows W.swapUp)           -- Swap to previous window
     , ("M-S-<End>"         , spawn "xset dpms force off")-- Shuts down screen
     
-    -- Scripts
+    -- KB_group Scripts
     , ("M1-<Shift_L>"      , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
     , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- take Screenshot + save to Clip
      
-    -- Dmenu Scripts
+    -- KB_group Dmenu Scripts
     , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
-    , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search 
+    , ("M-p w"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search 
     , ("M-p r"             , spawn "~/.config/dmscripts/dm-radio")       -- dmenu online Radio
     , ("M-p g"             , spawn "~/.config/dmscripts/dm-podcast")     -- dmenu online Podcast
     , ("M-p b"             , spawn "~/.config/dmscripts/dm-bookmarks")   -- dmenu Bookmarks
     , ("M-p n"             , spawn "~/.config/dmscripts/dm-notes")       -- dmenu Notes
     , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- dmenu USB mount/unmount
     , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- dmenu Colorscheme 
-    , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
+    , ("M-p t"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
     , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth") -- dmenu Bluetooth 
     , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- dmenu Power 
-    , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
-    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
+    , ("M-p m"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
+    , ("M-p i"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
+
+
+    -- Switchers 
 
     -- Parameters
     , ("<XF86MonBrightnessUp>"  , spawn "brillo -q -A 5") -- increase Brightness
@@ -215,7 +218,7 @@ myKeys conf = mkKeymap conf $
     -- 
     ] ++
 
-    -- m-[1..9], Switch to workspace N
+    -- Switch To Workspace N [1..9]
     [(m ++ k, windows $ f w)
         | (w, k) <- zip (XMonad.workspaces conf) (map show [1..9])
         , (m, f) <- [("M-",W.greedyView), ("M-S-",W.shift)]]
@@ -280,7 +283,7 @@ myStartupHook = do
 main = do
   xmproc0 <- spawnPipe ("xmobar -x 0 ~/.config/xmobar/" ++ colorScheme ++ "-xmobar.hs " ++ "-B" ++ colorBk ++ " -F" ++ colorFr)
   -- xmproc1 <- spawnPipe ("xmobar -x 1 ~/.config/xmobar/" ++ colorScheme ++ "-xmobar.hs " ++ "-B" ++ colorBk ++ " -F" ++ colorFr)
-  xmonad $ewmh $ docks $ def
+  xmonad $ ewmh $ docks $ def
       {
       -- simple stuff
         terminal           = myTerminal,
