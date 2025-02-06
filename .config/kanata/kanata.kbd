@@ -20,8 +20,9 @@
   j (multi f24 (tap-hold $tap-time $hold-time j rmet))
   k (multi f24 (tap-hold $tap-time $hold-time k rctl))
   l (multi f24 (tap-hold $tap-time $hold-time l ralt))
-  ; (multi f24 (tap-hold $tap-time $hold-time ; rsft)))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; rsft))
 
+)
 (deflayer base
   @caps @a @s @d @f @j @k @l @;
 )
