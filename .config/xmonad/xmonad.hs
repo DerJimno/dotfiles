@@ -89,8 +89,7 @@ myFocusedBorderColor = color06
 ------------------------------------------------------------------------
 -- MODKEY
 ------------------------------------------------------------------------
-myModMask = mod4Mask
-
+myModMask = mod4Mask 
 ------------------------------------------------------------------------
 -- Other Stuff
 ------------------------------------------------------------------------
@@ -271,7 +270,6 @@ myStartupHook = do
   spawnOnce "picom &"
   spawnOnce "volumeicon &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
-  spawnOnce "setxkbmap -option caps:escape &"
   spawnOnce "xsettingsd &"
   spawnOnce "applications/pcloud &"
   spawnOnce "synclient TapButton1=1"
