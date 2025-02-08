@@ -4,25 +4,18 @@
 )
 
 (defsrc
-  caps a s d f j k l ;
+  caps spc
 )
 (defvar
-  tap-time 150
+  tap-time 150 
   hold-time 200
 )
 
 (defalias
   caps (multi f24 (tap-hold $tap-time $hold-time esc esc))
-  a (multi f24 (tap-hold $tap-time $hold-time a lsft))
-  s (multi f24 (tap-hold $tap-time $hold-time s lalt))
-  d (multi f24 (tap-hold $tap-time $hold-time d lctl))
-  f (multi f24 (tap-hold $tap-time $hold-time f lmet))
-  j (multi f24 (tap-hold $tap-time $hold-time j rmet))
-  k (multi f24 (tap-hold $tap-time $hold-time k rctl))
-  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
-  ; (multi f24 (tap-hold $tap-time $hold-time ; rsft))
-
+  spc (multi f24 (tap-hold $tap-time $hold-time spc lmet))
 )
+
 (deflayer base
-  @caps @a @s @d @f @j @k @l @;
+  @caps @spc
 )
