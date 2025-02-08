@@ -33,7 +33,7 @@ Config {
         -- memory usage monitor
         , Run Memory ["-t", "<fn=1>\xe266</fn> <used>M (<usedratio>%)"] 20
         -- time and date
-        , Run Date           "<fn=1>\xf18fa</fn> %d %b %y - (%H:%M)" "date" 50
+        , Run Date "<fn=1>\xf18fa</fn> %d %b %y - (%H:%M)" "date" 50
 
         -- pacupdate
         , Run Com "echo" ["<fn=1>\xf0b7e</fn> "] "pacupicon" 3600
