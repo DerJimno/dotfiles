@@ -16,7 +16,7 @@ o.autoindent= true
 o.tabstop = 4
 o.shiftwidth = 4
 o.wrap = true
-o.textwidth = 80
+o.textwidth = 100
 o.softtabstop = -1
 
 
