@@ -166,7 +166,7 @@ myKeys conf = mkKeymap conf $
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
     , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
-    , ("M-S-m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
+    , ("M-m"               , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- KB_group Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
@@ -176,7 +176,7 @@ myKeys conf = mkKeymap conf $
     , ("M-S-r"             , refresh)                    -- correct window-size
     , ("M-j"               , windows W.focusDown)        -- focus on next window
     , ("M-k"               , windows W.focusUp)          -- focus on previous window
-    , ("M-m"               , windows W.focusMaster)      -- focus on master window
+    , ("M-S-m"             , windows W.focusMaster)      -- focus on master window
     , ("M-S-c"             , kill)                       -- kill Window
     , ("M-S-f"             , sendMessage (Toggle "Full")) -- fullscreen Window
     , ("M-S-j"             , windows W.swapDown)         -- Swap to next window
