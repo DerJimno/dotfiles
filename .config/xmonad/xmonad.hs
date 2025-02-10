@@ -170,8 +170,8 @@ myKeys conf = mkKeymap conf $
     , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
-    , ("M-d"               , sequence_ [spawnOn "chat" "discord", windows $ W.greedyView "chat"])              -- launch Discord
     , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
+    , ("M-d"               , sequence_ [spawnOn "chat" "discord", windows $ W.greedyView "chat"])              -- launch Discord
     , ("M-m"               , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- KB_group Actions    
