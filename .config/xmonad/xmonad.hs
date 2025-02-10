@@ -161,7 +161,7 @@ spirals  = renamed [Replace "spirals"]
 myKeys conf = mkKeymap conf $  
  
     -- KB_group XMoanad
-    [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
+    [ ("M-q"               , spawn "xmonad --recompile && xmonad --restart") -- recompile and restart.
     , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
     , ("M-p k"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds (this list)
 
