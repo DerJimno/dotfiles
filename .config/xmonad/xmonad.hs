@@ -163,7 +163,7 @@ myKeys conf = mkKeymap conf $
     -- KB_group XMoanad
     [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
     , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
-    , ("M-p k"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds 
+    , ("M-p k"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds (this list)
 
     -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
@@ -190,7 +190,7 @@ myKeys conf = mkKeymap conf $
     
     -- KB_group Scripts
     , ("M1-<Shift_L>"      , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
-    , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- Screenshot + save to clip
+    , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- screenshot + save to clip
      
     -- KB_group Dmenu Scripts
     , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
