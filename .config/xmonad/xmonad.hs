@@ -223,6 +223,7 @@ myKeys conf = mkKeymap conf $
     ] ++
 
     -- Switch To Workspace N [1..9]
+    -- Shift Window to Workspaces N [1..9]
     [(m ++ k, windows $ f w)
         | (w, k) <- zip (XMonad.workspaces conf) (map show [1..9])
         , (m, f) <- [("M-",W.greedyView), ("M-S-",W.shift)]]
