@@ -109,8 +109,9 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 ------------------------------------------------------------------------
 -- Boxes
 ------------------------------------------------------------------------
-doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
+doKeybindBox = doRectFloat (W.RationalRect 0.4 0.17 0.2 0.7)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
+doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 
 ------------------------------------------------------------------------
 -- Add Spacing
@@ -162,7 +163,7 @@ myKeys conf = mkKeymap conf $
     -- KB_group XMoanad
     [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
     , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
-    , ("M-p v"             , spawn "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh")    -- keybinds 
+    , ("M-p v"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds 
 
     -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
