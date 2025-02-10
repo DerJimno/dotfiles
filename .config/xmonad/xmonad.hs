@@ -109,7 +109,7 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 ------------------------------------------------------------------------
 -- Boxes
 ------------------------------------------------------------------------
-doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
+doDialogBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 
 ------------------------------------------------------------------------
