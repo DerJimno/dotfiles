@@ -163,7 +163,7 @@ myKeys conf = mkKeymap conf $
     -- KB_group XMoanad
     [ ("M-q"               , spawn "xmonad --recompile; xmonad --restart") -- recompile and restart.
     , ("M-S-q"             , io (exitWith ExitSuccess)) -- quit xmonad.
-    , ("M-p v"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds 
+    , ("M-p k"             , spawnAndDo doKeybindBox "alacritty --hold -e .config/xmonad/lib/xmonad-keybinds.sh") -- keybinds 
 
     -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
