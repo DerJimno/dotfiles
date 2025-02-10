@@ -109,7 +109,7 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 ------------------------------------------------------------------------
 -- Boxes
 ------------------------------------------------------------------------
-doDialogBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
+doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 
 ------------------------------------------------------------------------
@@ -203,7 +203,7 @@ myKeys conf = mkKeymap conf $
     , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
     , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth") -- dmenu Bluetooth 
     , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")     -- dmenu Power 
-    , ("M-p w"             , spawnAndDo doDialogBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
+    , ("M-p w"             , spawnAndDo doWeatherBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
     , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
 
 
