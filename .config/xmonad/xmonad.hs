@@ -106,8 +106,11 @@ myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
-doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9) 
-doPassBox = doRectFloat (W.RationalRect 0.4 0.45 0.2 0.05) 
+------------------------------------------------------------------------
+-- Boxes
+------------------------------------------------------------------------
+doDialogBox = doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
+doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 
 ------------------------------------------------------------------------
 -- Add Spacing
