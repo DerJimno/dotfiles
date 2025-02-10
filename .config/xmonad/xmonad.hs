@@ -109,7 +109,7 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 ------------------------------------------------------------------------
 -- Boxes
 ------------------------------------------------------------------------
-doKeybindBox = doRectFloat (W.RationalRect 0.4 0.17 0.2 0.7)
+doKeybindBox = doRectFloat (W.RationalRect 0.4 0.17 0.2 0.71)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 
@@ -190,7 +190,7 @@ myKeys conf = mkKeymap conf $
     
     -- KB_group Scripts
     , ("M1-<Shift_L>"      , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
-    , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- take Screenshot + save to Clip
+    , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- Screenshot + save to clip
      
     -- KB_group Dmenu Scripts
     , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
