@@ -171,7 +171,7 @@ myKeys conf = mkKeymap conf $
     , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-b"               , spawn "brave")              -- launch Brave
     , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
-    , ("M-d"               , sequence_ [spawnOn "chat" "discord", windows $ W.greedyView "chat"])              -- launch Discord
+    , ("M-d"               , spawn "discord")            -- launch Discord
     , ("M-m"               , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- KB_group Actions    
@@ -251,8 +251,10 @@ myManageHook = composeAll
     , className =? "Alacritty"          --> doShift ( myWorkspaces !! 0 )
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
+    , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
-    , isDialog                          --> doCenterFloat 
+    , className =? "libreoffice-startcenter"  --> doShift ( myWorkspaces !! 5 )
+    , isDialog                                --> doCenterFloat 
     --, resource  =? "desktop_window"     --> doIgnore
     --, resource  =? "kdesktop"         --> doIgnore 
     ]
