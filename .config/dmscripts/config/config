@@ -12,7 +12,7 @@ notes="${HOME}/.config/dmscripts/notes"
 
 # Config Files
 declare -Ag confedit_list
-confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.toml"
 confedit_list[bashrc]="$HOME/.bashrc"
 confedit_list[fish]="$HOME/.config/fish/config.fish"
 confedit_list[neovim]="$HOME/.config/nvim/init.lua"
