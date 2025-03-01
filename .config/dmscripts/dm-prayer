@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+
+country=$(printf 'Algeria\nFrance\nGermany\nUSA' | ${DMENU} 'Choose your country:' "$@")
+country="$(echo $country | sed "s/ /-/g")"
+
+if [ "$country" ]; then
+    city=$(printf 'Algiers\nParis\nBerlin\nChicago' | ${DMENU} 'Choose your city:' "$@")
+    city="$(echo $city | sed "s/ /-/g")"
+
+
+    if [ "$country" ]; then
+        alacritty --hold -o font.size="11" -e python .local/bin/adhan.py "$country" "$city"
+    else
+        echo "Program terminated." && exit 0
+    fi
+else
+    echo "Program terminated." && exit 0
+fi
