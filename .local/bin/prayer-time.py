@@ -17,6 +17,6 @@ client = aladhan.Client(location)
 adhans = client.get_today_times()
 
 print(f"Today's Prayer Times for {args.city}, {args.country}")
-print("======================================")
+print("=========================================")
 for adhan in adhans:
-    print("{: <15} | {: <15}".format(adhan.get_en_name(), adhan.readable_timing(show_date=False)))
+    print("           {: <8} | {: <8}".format(adhan.get_en_name(), adhan.readable_timing(show_date=False)))
