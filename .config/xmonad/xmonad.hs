@@ -39,6 +39,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ToggleLayouts
+import XMonad.Layout.Reflect
 
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit , decreaseLimit)
@@ -236,6 +237,7 @@ myKeys conf = mkKeymap conf $
 myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
                                                     tall 
                                                 ||| Mirror tall
+                                                ||| reflectHoriz tall
                                                 ||| grid
                                                 ||| Accordion
                                                 ||| spirals)
