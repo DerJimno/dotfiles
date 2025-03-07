@@ -16,13 +16,11 @@ vim.opt.rtp:prepend(lazypath)
  
 local plugins = {
   'vifm/vifm.vim',        -- File Manager 
-  'tpope/vim-surround',
+  'tpope/vim-surround',   -- Manage surroundings " ' ( [ {  etc..
   'ap/vim-css-color',     -- Syntax Highlighting and Colors --
-  -- 'nickeb96/fish.vim',
     
   -- Statusline
-  {
-    'nvim-lualine/lualine.nvim', 
+  {'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = { 
       theme = 'solarized_dark',
@@ -43,6 +41,5 @@ local plugins = {
 }
 
 local opts = {}
-
 
 require("lazy").setup(plugins, opts)
