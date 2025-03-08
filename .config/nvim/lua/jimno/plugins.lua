@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
  
 local plugins = {
   'vifm/vifm.vim',        -- File Manager 
+  'mattn/emmet-vim',      -- emmet html - css workflow
   'tpope/vim-surround',   -- Manage surroundings " ' ( [ {  etc..
   'tpope/vim-endwise',    -- end some keywords for you like: def, if... 
   'tpope/vim-commentary', -- Comment with keybinds
