@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   'vifm/vifm.vim',        -- File Manager 
   'tpope/vim-surround',   -- Manage surroundings " ' ( [ {  etc..
+  'tpope/vim-endwise',    -- end some keywords for you like: def, if... 
   'tpope/vim-commentary', -- Comment with keybinds
   'ap/vim-css-color',     -- Syntax Highlighting and Colors --
   {'neoclide/coc.nvim', branch = 'release', run = 'npm ci'}, -- autocompletion for lang server
