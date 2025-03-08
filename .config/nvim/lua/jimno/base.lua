@@ -35,3 +35,7 @@ o.swapfile = false
 g.mapleader = " "
 g.maplocalleader = " "
 
+-- coc node path
+g.coc_node_path = '.local/share/fnm/node-versions/*/installation/bin/node'
+
+
