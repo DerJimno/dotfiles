@@ -19,7 +19,8 @@ local plugins = {
   'tpope/vim-surround',   -- Manage surroundings " ' ( [ {  etc..
   'tpope/vim-commentary', -- Comment with keybinds
   'ap/vim-css-color',     -- Syntax Highlighting and Colors --
-    
+  {'neoclide/coc.nvim', branch = 'release', run = 'npm ci'}, -- autocompletion for lang server
+
   -- Statusline
   {'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
