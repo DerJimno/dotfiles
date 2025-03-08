@@ -27,5 +27,6 @@ alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=$HOME'
 set -gx EDITOR nvim
 set -gx TERM alacritty
 set -x MANPAGER "nvim +Man!"
+set -U fish_user_paths .local/share/fnm
 
 ######### Autostart ##########
