@@ -38,4 +38,6 @@ g.maplocalleader = " "
 -- coc node path
 g.coc_node_path = '.local/share/fnm/node-versions/*/installation/bin/node'
 
-
+-- emmet stuff
+g.user_emmet_mode='n'
+g.user_emmet_leader_key=','
