@@ -1,0 +1,2 @@
+return {'junegunn/vim-emoji',}
+
