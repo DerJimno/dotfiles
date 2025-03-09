@@ -16,10 +16,11 @@ vim.opt.rtp:prepend(lazypath)
  
 local plugins = {
   'vifm/vifm.vim',        -- File Manager 
-  'mattn/emmet-vim',      -- emmet html - css workflow
+  'mattn/emmet-vim',      -- emmet html - css
   'tpope/vim-surround',   -- Manage surroundings " ' ( [ {  etc..
   'tpope/vim-endwise',    -- end some keywords for you like: def, if... 
   'tpope/vim-commentary', -- Comment with keybinds
+  'nvim-treesitter/nvim-treesitter', -- Treesitter
   'ap/vim-css-color',     -- Syntax Highlighting and Colors --
   {'neoclide/coc.nvim', branch = 'release', run = 'npm ci'}, -- autocompletion for lang server
 
@@ -34,7 +35,6 @@ local plugins = {
    -- Telescope
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
-  'nvim-treesitter/nvim-treesitter',
 
   -- Emoji Plugins --
   'junegunn/vim-emoji',
