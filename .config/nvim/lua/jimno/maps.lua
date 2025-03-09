@@ -8,7 +8,7 @@ end
 map("n", "<leader>vf", "<CMD>Vifm<CR>")
 
 -- Keybindings for telescope
-map("n", "<leader>fo", "<CMD>Telescope oldfiles<CR>")
+map("n", "<leader>fg", "<CMD>Telescope oldfiles<CR>")
 map("n", "<leader>ff", "<CMD>Telescope find_files<CR>")
 
 -- Keybindings for tpope commentary plugin
