@@ -5,8 +5,8 @@ opacity = 1.0
 title = "Alacritty"
 
 [window.padding]
-x = 5 
-y = 5
+x = 10 
+y = 10
 
 [window.class]
 instance = "Alacritty"
@@ -17,22 +17,22 @@ history = 5000
 multiplier = 3
 
 [font]
-size = 11
+size= 11
 
 [font.normal]
-family = "Ubuntu Mono"
+family= "Ubuntu Mono"
 style  = "Regular"
 
 [font.bold]
-family = "Ubuntu Mono"
+family= "Ubuntu Mono"
 style = "Bold"
 
 [font.italic]
-family = "Ubuntu Mono"
+family= "Ubuntu Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "Ubuntu Mono"
+family= "Ubuntu Mono"
 style = "Bold Italic"
 
 [colors]
