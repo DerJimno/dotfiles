@@ -85,7 +85,7 @@ myBorderWidth        = 2
 
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor  = colorBk
-myFocusedBorderColor = color06
+myFocusedBorderColor = color01
 
 ------------------------------------------------------------------------
 -- MODKEY
@@ -316,20 +316,28 @@ main = do
         logHook            = dynamicLogWithPP xmobarPP
           { ppOutput  = \x -> hPutStrLn xmproc0 x
                           -- >> hPutStrLn xmproc1 x
-          , ppCurrent = xmobarColor color06 "" . wrap ("<box type=Top width=2 mb=2 color=" ++ color06 ++ ">") "</box>" 
-          , ppVisible = xmobarColor color04 "" . clickable
-          , ppHidden  = xmobarColor color06 "" . clickable
-          , ppHiddenNoWindows = xmobarColor color05 "" . clickable
-          , ppTitle   = xmobarColor color11 "" . shorten 20
-          , ppSep     = "<fc=" ++ color11 ++ "> | </fc>"
-          , ppWsSep   = "  "
-          , ppUrgent  = xmobarColor color02 "" . shorten 60
+          -- current workspace
+          , ppCurrent = xmobarColor color02 "" . wrap ("<box type=Top width=2 mb=2 color=" ++ color02 ++ ">") "</box>" 
+          -- workspaces in use
+          , ppHidden  = xmobarColor color02 "" . clickable
+          -- workspaces not in use
+          , ppHiddenNoWindows = xmobarColor color03 "" . clickable
+          -- Layout
+          , ppLayout  = xmobarColor color04 ""
+          -- window counter
           , ppExtras  = [ (fmap . fmap) num $ windowCount ]
-          , ppLayout  = xmobarColor color07 ""                   
+          -- separator/s
+          , ppSep     = " | "
+          , ppWsSep   = "  "
+          -- window title 
+          , ppTitle   = xmobarColor color06 "" . shorten 20
+          
+          -- Other
           , ppOrder   = \(ws:l:t:ex) -> [ws, l]++ex++[t]  
-
+          , ppUrgent  = xmobarColor color01 "" . shorten 60
+          , ppVisible = xmobarColor color01 "" . clickable
           }
       }
       where
         num :: String -> String
-        num = xmobarColor color03 colorBk
+        num = xmobarColor color05 colorBk
