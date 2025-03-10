@@ -13,3 +13,6 @@ map("x", "\\\\", "<Plug>Commentary")
 
 -- enable <CR> to work wirh coc (autocompletion plugin)
 map("i", "<CR>", "coc#pum#visible() ? coc#pum#confirm() : \"\\<CR>\"", { expr = true, noremap = true })
+
+-- call oil (buffer file manager)
+map("n", "-", "<CMD>Oil --float --preview<CR>")
