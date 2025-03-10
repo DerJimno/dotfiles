@@ -50,5 +50,5 @@ Config {
         -- layout
         , sepChar =  "%"
         , alignSep = "}{"
-        , template = " <fc=#ad8ee6>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#444b6a>%pacupicon% %pacup%</fc> | <fc=#f7768e>%cpu%</fc> | <fc=#f7768e>%cpu-temp-icon%%cpu-temp%</fc> | <fc=#9ece6a>%disku%</fc> | <fc=#e0af68>%memory%</fc> | <fc=#ad8ee6>%enp34s0%</fc> | <fc=#7aa2f7>%date%</fc> | <fc=#449dab>%volicon% %vol%</fc> | <fc=#787c99>%kbdicon%%kbd%</fc> "
+        , template = " <fc=#004058>%logo%</fc> | %UnsafeStdinReader% }{ <fc=#f4938c>%pacupicon% %pacup%</fc> | <fc=#c8775c>%cpu%</fc> | <fc=#c8775c>%cpu-temp-icon%%cpu-temp%</fc> | <fc=#a4e4fc>%disku%</fc> | <fc=#3cbcfc>%memory%</fc> | <fc=#3cbcfc>%enp34s0%</fc> | <fc=#008888>%date%</fc> | <fc=#004058>%volicon% %vol%</fc> | <fc=#004058>%kbdicon%%kbd%</fc> "
 
