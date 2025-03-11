@@ -106,11 +106,11 @@ done < <(cat $HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks | grep 
 
 # Podcast Rss
 declare -Ag rss 
-rss[Mach es einfach - Ben Ouattara]="https://benouattara.libsyn.com/rss"
+rss[Mach es einfach - Ben Ouattara]="https://feeds.buzzsprout.com/2451303.rss"
 rss[Ruby On Rails - Elise Shaffer and Brian Mariani]="https://feeds.fireside.fm/therubyonrailspodcast/rss"
-rss[Quran - Abdul Muhsin Al Qasim]="https://qurancentral.com/audio/abdul-muhsin-al-qasim/feed/"
+rss[Quran - Abdul Basit]="https://anchor.fm/s/f96627a0/podcast/rss"
 rss[SAYER - Adam Bash]="https://feeds.feedburner.com/sayer"
-rss[Git Tips - Chris Hunt]="https://www.briefs.fm/git-tips.xml"
+rss[The Diary Of A CEO - Steven Bartlett]="https://feeds.megaphone.fm/thediaryofaceo"
 rss[Remote Ruby - Jason Charnes, Chris Oliver, Andrew Mason]="https://feeds.buzzsprout.com/2260490.rss"
 rss[Syntax(WebDev) - Wes Bos]="https://feed.syntax.fm/rss"
 rss[kill]="nil"
