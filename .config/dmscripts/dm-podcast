@@ -3,28 +3,32 @@
 set -euo pipefail
 source .config/dmscripts/config/config
 
-
-pod=$(printf '%s\n' "${!rss[@]}" | sort | ${DMENU} 'Listen to:' "$@")
-if [ "$pod" = "kill" ]; then
-    pkill -f http && exit 0
-elif [ "$pod" ]; then
-declare -Ag podcast
-output=$(curl -s "${rss["${pod}"]}" | sed -n '/<item>/,/<\/item>/p' | awk -F'</?title>|</?link>' '/<title>/{ title=$2} /<link>/{print "" title "=" $2}' | sed -e 's/<!\[CDATA\[//g; s/\]\]>//g')
-while IFS='=' read -r title url; do
-    podcast["$title"]=$url
-done < <(echo "$output")
-
-choice=$(printf '%s\n' "${!podcast[@]}" | sort | ${DMENU} 'Listen to:' "$@")
+# choose a podcast from the list
+choice=$(printf '%s\n' "${!rss[@]}" | sort | ${DMENU} 'Listen to:' "$@")
 
 if [ "$choice" = "kill" ]; then
-    pkill -f http && exit 0 
+    pkill -f http && exit 0
 elif [ "$choice" ]; then
-    pkill -f http || echo "mpv wasn't running." 
-    url="${podcast["${choice}"]}"
-    mpv --volume=100 "$url"
-else
-    echo "Program terminated." && exit 0
-fi
+    declare -Ag podcast
+
+    # filter title and url from rss/xml
+    output=$(curl -s "${rss["${choice}"]}" | sed -n '/<item>/,/<\/item>/ {s|.*<title>\(.*\)</title>.*|\1|p; s|.*url="\([^"]*\)".*|\1|p}' | paste -d= - -)
+    while IFS='=' read -r title url; do
+        podcast["$title"]=$url
+    done < <(echo "$output")
+
+    # choose an episode
+    episode=$(printf '%s\n' "${!podcast[@]}" | sort | ${DMENU} 'Episodes:' "$@")
+
+    if [ "$episode" = "kill" ]; then
+        pkill -f http && exit 0 
+    elif [ "$episode" ]; then
+        pkill -f http || echo "mpv wasn't running." 
+        url="${podcast["${episode}"]}"
+        mpv --volume=100 --audio-channels=stereo "$url"
+    else
+        echo "Program terminated." && exit 0
+    fi
 else 
     echo "Program terminated." && exit 0
 fi
