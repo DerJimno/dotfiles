@@ -1,0 +1,2 @@
+xmonad --recompile &
+xmonad --restart &
