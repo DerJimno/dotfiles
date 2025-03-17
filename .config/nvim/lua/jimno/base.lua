@@ -36,7 +36,7 @@ g.mapleader = ","
 g.maplocalleader = ","
 
 -- coc node path
-g.coc_node_path = '.local/share/fnm/node-versions/v22.14.0/installation/bin/node'
+g.coc_node_path = '$HOME/.local/share/fnm/node-versions/v22.14.0/installation/bin/node'
 
 -- emmet stuff
 g.user_emmet_mode='n'
