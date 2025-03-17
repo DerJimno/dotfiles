@@ -1,21 +1,33 @@
 ;; defsrc is still necessary
 (defcfg
-  process-unmapped-keys yes
-)
+    process-unmapped-keys yes
+    log-layer-changes no
+ )
 
 (defsrc
-  caps spc
-)
-(defvar
-  tap-time 150 
-  hold-time 200
-)
-
-(defalias
-  caps (multi f24 (tap-hold $tap-time $hold-time esc esc))
-  spc (multi f24 (tap-hold $tap-time $hold-time spc lmet))
-)
+    caps 
+    spc
+    h j k l
+ )
 
 (deflayer base
-  @caps @spc
-)
+    @cap 
+    @spc
+    h j k l
+ )
+
+(deflayer cap-mod      
+    _ 
+    _
+    left down up rght
+ )
+
+(defvar
+    tap-time 150 
+    hold-time 200
+ )
+
+(defalias
+    spc (tap-hold-press $tap-time $hold-time spc lmet)
+    cap (tap-hold-press $tap-time $hold-time esc (layer-toggle cap-mod))
+ )
