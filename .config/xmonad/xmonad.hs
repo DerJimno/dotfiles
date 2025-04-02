@@ -250,7 +250,6 @@ myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
 myManageHook = composeAll 
     [ className =? "Gimp"               --> doFloat
     , className =? "Xmessage"           --> doMessageBox 
-    , className =? "libreoffice"        --> doFloat
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
