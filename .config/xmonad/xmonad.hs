@@ -247,9 +247,8 @@ myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
 -- Hint: To find the property name associated with a program, use xprop!
 ------------------------------------------------------------------------
 myManageHook = composeAll 
-    [ className =? "MPlayer"            --> doFloat
-    , className =? "Gimp"               --> doFloat
-    , className =? "error"              --> doFloat
+    [ className =? "Gimp"               --> doFloat
+    , className =? "error"              --> doFloa
     , className =? "libreoffice"        --> doFloat
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
