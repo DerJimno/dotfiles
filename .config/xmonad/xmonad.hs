@@ -252,10 +252,11 @@ myManageHook = composeAll
     , className =? "Xmessage"           --> doMessageBox 
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
-    , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
+    , className =? "libreoffice-startcenter"  
+                                        --> doShift ( myWorkspaces !! 2 )
     , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
-    , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
-    , className =? "libreoffice-startcenter"  --> doShift ( myWorkspaces !! 5 )
+    , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 4 )
+    , className =? "mpv"                --> doShift ( myWorkspaces !! 5 )
     , isDialog                                --> doCenterFloat 
     ]
 
