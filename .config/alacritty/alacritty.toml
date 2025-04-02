@@ -5,8 +5,8 @@ opacity = 1.0
 title = "Alacritty"
 
 [window.padding]
-x = 10 
-y = 10
+x = 5 
+y = 5 
 
 [window.class]
 instance = "Alacritty"
