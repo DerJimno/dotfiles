@@ -257,8 +257,6 @@ myManageHook = composeAll
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
     , className =? "libreoffice-startcenter"  --> doShift ( myWorkspaces !! 5 )
     , isDialog                                --> doCenterFloat 
-    --, resource  =? "desktop_window"     --> doIgnore
-    --, resource  =? "kdesktop"         --> doIgnore 
     ]
 
 ------------------------------------------------------------------------
