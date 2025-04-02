@@ -102,7 +102,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Workspaces
 ------------------------------------------------------------------------
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "www", "doc", "chat", "vid", "edi", "gfx", "not", "gam"]
+myWorkspaces = ["dev", "www", "edi", "chat", "doc", "med", "log"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -226,10 +226,10 @@ myKeys conf = mkKeymap conf $
     -- 
     ] ++
 
-    -- Switch To Workspace N [1..9]
-    -- Shift Window to Workspaces N [1..9]
+    -- Switch To Workspace N [1..7]
+    -- Shift Window to Workspaces N [1..7]
     [(m ++ k, windows $ f w)
-        | (w, k) <- zip (XMonad.workspaces conf) (map show [1..9])
+        | (w, k) <- zip (XMonad.workspaces conf) (map show [1..7])
         , (m, f) <- [("M-",W.greedyView), ("M-S-",W.shift)]]
 
 ------------------------------------------------------------------------
