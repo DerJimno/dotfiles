@@ -114,6 +114,7 @@ doKeybindBox = doRectFloat (W.RationalRect 0.4 0.17 0.2 0.71)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 doPrayerBox = doRectFloat (W.RationalRect 0.42 0.4 0.16 0.14)
+doMessageBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 
 ------------------------------------------------------------------------
 -- Add Spacing
@@ -248,7 +249,7 @@ myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
 ------------------------------------------------------------------------
 myManageHook = composeAll 
     [ className =? "Gimp"               --> doFloat
-    , className =? "error"              --> doFloa
+    , className =? "Xmessage"           --> doMessageBox 
     , className =? "libreoffice"        --> doFloat
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
