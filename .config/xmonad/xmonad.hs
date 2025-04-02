@@ -169,7 +169,7 @@ myKeys conf = mkKeymap conf $
 
     -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
-    , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
+    , ("M-<Return>"        , spawn "alacritty")          -- launch Alacritty
     , ("M-l f"             , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-l b"             , spawn "brave")              -- launch Brave
     , ("M-l l"             , spawn "libreoffice")        -- launch Libreoffice
@@ -252,7 +252,6 @@ myManageHook = composeAll
     , className =? "error"              --> doFloat
     , className =? "libreoffice"        --> doFloat
     , className =? "mpv"                --> doFloat 
-    , className =? "Alacritty"          --> doShift ( myWorkspaces !! 0 )
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
     , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
