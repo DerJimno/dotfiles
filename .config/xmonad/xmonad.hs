@@ -170,11 +170,11 @@ myKeys conf = mkKeymap conf $
     -- KB_group launch Apps
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
     , ("M-<Return>"        , sequence_ [spawn "alacritty", windows $ W.greedyView "dev"])                      -- launch Alacritty
-    , ("M-f"               , spawn "pcmanfm")            -- launch Pcmanfm
-    , ("M-b"               , spawn "brave")              -- launch Brave
-    , ("M-l"               , spawn "libreoffice")        -- launch Libreoffice
-    , ("M-d"               , spawn "discord")            -- launch Discord
-    , ("M-m"               , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
+    , ("M-l f"             , spawn "pcmanfm")            -- launch Pcmanfm
+    , ("M-l b"             , spawn "brave")              -- launch Brave
+    , ("M-l l"             , spawn "libreoffice")        -- launch Libreoffice
+    , ("M-l d"             , spawn "discord")            -- launch Discord
+    , ("M-l m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- KB_group Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
@@ -285,6 +285,7 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "xsettingsd &"
   spawnOnce "pcloud &"
+  spawnOnce "$HOME/documents/development/./script &"
   spawnOnce "synclient TapButton1=1"
 
 ------------------------------------------------------------------------
