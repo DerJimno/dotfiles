@@ -102,7 +102,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Workspaces
 ------------------------------------------------------------------------
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "www", "edi", "chat", "doc", "med", "log"]
+myWorkspaces = ["dev", "www", "doc", "edi", "chat", "vid", "log"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
