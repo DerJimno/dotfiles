@@ -283,7 +283,7 @@ myStartupHook = do
   spawnOnce "xsettingsd &"
   spawnOnce "pcloud &"
   spawnOnce "$HOME/documents/development/./script &"
-  spawnOnce "synclient TapButton1=1"
+  spawnOnce "synclient TapButton1=1" -- for touchpad click
 
 ------------------------------------------------------------------------
 -- Main Hook
