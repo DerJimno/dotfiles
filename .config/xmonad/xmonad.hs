@@ -54,7 +54,7 @@ import XMonad.Layout.SubLayouts
 import Graphics.X11.ExtraTypes.XF86
 
 -- Color Schemes
-import Colors.SolarizedDark
+import Colors.OceanicNext
            -- SolarizedDark
            -- SolarizedLight
            -- Nord
