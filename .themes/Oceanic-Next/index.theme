@@ -1,12 +1,11 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=oceanic
-Comment=An Clean Gtk+ theme based on Material Design
+Name=Juno
+Comment=GTK themes inspired by epic vscode themes
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=oceanic
-MetacityTheme=oceanic
-IconTheme=Adwaita
-CursorTheme=Adwaita
-ButtonLayout=menu:minimize,maximize,close
+GtkTheme=Juno
+MetacityTheme=Juno
+IconTheme=Zafiro-icons
+ButtonLayout=:minimize,maximize,close
