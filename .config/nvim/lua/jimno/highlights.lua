@@ -1,7 +1,7 @@
 -------------------------------------------------
 -- COLORSCHEMES
 -------------------------------------------------
-local ok, _ = pcall(vim.cmd, 'colorscheme base16-oceanicnext')
+local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-dark')
 -- monokai
 -- nord
 -- oceanicnext
