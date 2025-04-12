@@ -121,6 +121,7 @@ doMessageBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 ------------------------------------------------------------------------
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
+
 ------------------------------------------------------------------------
 -- Layouts
 ------------------------------------------------------------------------
@@ -132,15 +133,11 @@ tall     = renamed [Replace "tall"]
            $ subLayout [] (smartBorders Simplest)
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
-monocle  = renamed [Replace "monocle"]
-           -- $ smartBorders
-           -- $ windowNavigation
-           -- $ addTabs shrinkText
-           $ subLayout [] (smartBorders Simplest)
-           -- $ Full
+
 floats   = renamed [Replace "floats"]
            -- $ smartBorders
            -- $ simplestFloat
+
 grid     = renamed [Replace "grid"]
            $ limitWindows 9
            $ smartBorders
@@ -149,6 +146,7 @@ grid     = renamed [Replace "grid"]
            $ subLayout [] (smartBorders Simplest)
            $ mySpacing 8
            $ Grid (16/10)
+
 spirals  = renamed [Replace "spirals"]
            $ limitWindows 9
            $ smartBorders
@@ -244,11 +242,11 @@ myKeys conf = mkKeymap conf $
 ------------------------------------------------------------------------
 myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
                                                     tall
-                                                ||| Mirror tall
                                                 ||| reflectHoriz tall
+                                                --  ||| Mirror tall
                                                 ||| grid
-                                                ||| Accordion
-                                                ||| spirals )
+                                                ||| spirals
+                                                ||| Accordion )
 
 ------------------------------------------------------------------------
 -- Manage Hook:
