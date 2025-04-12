@@ -236,12 +236,12 @@ myKeys conf = mkKeymap conf $
 -- Layouthook:
 ------------------------------------------------------------------------
 myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
-                                                    tall 
+                                                    tall
                                                 ||| Mirror tall
                                                 ||| reflectHoriz tall
                                                 ||| grid
                                                 ||| Accordion
-                                                ||| spirals)
+                                                ||| spirals )
 
 ------------------------------------------------------------------------
 -- Manage Hook:
