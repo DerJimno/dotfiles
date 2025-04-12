@@ -1,4 +1,4 @@
-general.import = ["~/.config/alacritty/themes/solarized-dark.toml",]
+general.import = ["~/.config/alacritty/themes/tokyo-night.toml",]
 
 [window]
 opacity = 1.0
