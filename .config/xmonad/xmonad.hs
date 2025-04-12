@@ -223,14 +223,21 @@ myKeys conf = mkKeymap conf $
     -- switch WS with 
     , ("M-<R>"             , nextWS) -- M + -> to next Workspace
     , ("M-<L>"             , prevWS) -- M + <- to previous Workspace
-    -- 
-    ] ++
+ 
+    -- Resize windows
+    , ("M-C-l", sendMessage Expand)
+    , ("M-C-h", sendMessage Shrink)
+    , ("M-C-j", sendMessage MirrorExpand)
+    , ("M-C-k", sendMessage MirrorShrink)
+   
 
     -- Switch To Workspace N [1..7]
     -- Shift Window to Workspaces N [1..7]
+    ] ++
     [(m ++ k, windows $ f w)
         | (w, k) <- zip (XMonad.workspaces conf) (map show [1..7])
         , (m, f) <- [("M-",W.greedyView), ("M-S-",W.shift)]]
+
 
 ------------------------------------------------------------------------
 -- Layouthook:
