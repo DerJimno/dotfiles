@@ -16,3 +16,5 @@ map("i", "<CR>", "coc#pum#visible() ? coc#pum#confirm() : \"\\<CR>\"", { expr = 
 
 -- call oil (buffer file manager)
 map("n", "-", "<CMD>Oil --float --preview<CR>")
+
+map("n", "gl", function() vim.diagnostic.open_float() end) 
