@@ -9,7 +9,7 @@ return {
       -- Sort file and directory names case insensitive
       case_insensitive = true,
       },
-    
+
     float = {
       -- Padding around the floating window
       padding = 4,
