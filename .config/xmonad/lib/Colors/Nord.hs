@@ -7,7 +7,7 @@ colorScheme = "nord"
 colorBk = "#2e3440"
 colorFr = "#d8dee9"
            
-color01 = "#bf616a"
+color01 = "#F0544C"
 color02 = "#d08770"
 color03 = "#ebcb8b"
 color04 = "#a3be8c"
