@@ -7,7 +7,7 @@ colorScheme = "oceanic-next"
 colorBk = "#1b2b34"
 colorFr = "#d8dee9"
             
-color01 = "#5fb3b3"
+color01 = "#4285F4"
 color02 = "#6699cc"
 color03 = "#99c794"
 color04 = "#fac863"
