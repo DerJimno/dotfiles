@@ -9,14 +9,14 @@ choice=$(printf 'Copy note\nNew note\nDelete note\nQuit' | ${DMENU} 'Notes:' )
 case "$choice" in
 'Copy note')
     note_pick=$(${DMENU} 'Copy:' <"documents/notes/notes")
-    [ -n "${note_pick}" ] && echo "${note_pick}" |  tr -d '\n' | xclip -sel clip && notify-send -i .icons/notif/clip-note.svg -u normal "Note copied" "${note_pick}"
+    [ -n "${note_pick}" ] && echo "${note_pick}" |  tr -d '\n' | xclip -sel clip && dunstify -i $HOME/.icons/notif/clip-note.svg -u normal "Note copied" "${note_pick}"
     ;;
 'New note')
     note_new=$(echo "" | ${DMENU} 'Enter new note:')
     # Making sure the input is not empty and not already exist in notes.
     # The sed command should prevent grep from taking certain characters as a regex input.
     [ -n "$note_new" ] && ! grep -q "^$(echo "${note_new}" | sed -e 's/\[/\\[/g;s/\]/\\]/g')\$" "documents/notes/notes" \
-    && echo "${note_new}" >>"documents/notes/notes" && notify-send -i .icons/notif/new-note.svg -u normal "Note created" "${note_new}"
+    && echo "${note_new}" >>"documents/notes/notes" && dunstify -i $HOME/.icons/notif/new-note.svg -u normal "Note created" "${note_new}"
     ;;
 'Delete note')
     note_del=$(${DMENU} 'Delete:' <"documents/notes/notes")
@@ -25,7 +25,7 @@ case "$choice" in
     case "$yes_no" in
     'Yes')
         grep -v "^$(echo "${note_del}" | sed -e 's/\[/\\[/g;s/\]/\\]/g')\$" "documents/notes/notes" >"/tmp/dmnote" || true
-        [ -n "${note_del}" ] && cp -f "/tmp/dmnote" "documents/notes/notes" && notify-send -i .icons/notif/delete.svg -u normal "Note deleted" "${note_del}"
+        [ -n "${note_del}" ] && cp -f "/tmp/dmnote" "documents/notes/notes" && dunstify -i $HOME/.icons/notif/delete.svg -u normal "Note deleted" "${note_del}"
         ;;
     'No')
         echo "Program Terminated." && exit 0
