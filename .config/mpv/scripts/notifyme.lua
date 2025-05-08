@@ -4,7 +4,7 @@ function string.shellescape(str)
    return "'"..string.gsub(str, "'", "").."'"
 end
 function do_notify(a,b)
-   local command = ("notify-send -i .icons/notif/radcast.svg -e -t 2200 -a mpv -- %s %s"):format(a:shellescape(), 
+   local command = ("dunstify -i $HOME/.icons/notif/radcast.svg -t 2200 -- %s %s"):format(a:shellescape(), 
                                                                                                b:shellescape())
    if command ~= lastcommand then
       os.execute(command)
@@ -22,3 +22,11 @@ function notify_current_track()
 end
 
 mp.register_event("file-loaded", notify_current_track)
+
+-- Stopped Listening
+
+function notify_shutdown()
+   do_notify("Stopped Listening...", "")
+end
+
+mp.register_event("shutdown", notify_shutdown)
