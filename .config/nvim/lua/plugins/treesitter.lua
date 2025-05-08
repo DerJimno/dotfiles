@@ -14,9 +14,10 @@ return {
         enable = true,
         keymaps = {
           init_selection = "<Enter>", -- set to `false` to disable one of the mappings
-          node_incremental = "<Enter>",
+          node_incremental = "<Enter>", -- Press Enter to incremental select
           scope_incremental = false,
-          node_decremental = "<Backspace>",
+          node_decremental = "<Backspace>", -- Press Backspace to decremental select
+
         },
       },
     })
