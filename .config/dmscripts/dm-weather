@@ -19,7 +19,7 @@ if [ "$choice" ]; then
     url="https://wttr.in/${choice}?m3&lang=de"
         ;;
     esac
-    alacritty --hold -o font.normal.family="Ubuntu Mono" font.size="11" -e sh -c "curl -s '$url' | awk '!/Suivez/ && !/Emplacement/' | sed '1,7 s/^/                                             /' | sed 's/^/     /' | head -n -1 "
+    ./.local/bin/stay "curl -s '$url' | awk '!/Suivez/ && !/Emplacement/' | sed '1,7 s/^/                                             /' | sed 's/^/     /' | head -n -3 "
 else
     echo "Program terminated." && exit 0
 fi

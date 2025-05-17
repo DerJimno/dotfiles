@@ -12,7 +12,7 @@ if [ "$country" ]; then
 
 
     if [ "$country" ]; then
-        alacritty --hold -o font.size="11" -e python .local/bin/prayer-time.py "$country" "$city"
+        ./.local/bin/stay python .local/bin/prayer-time.py "$country" "$city"
     else
         echo "Program terminated." && exit 0
     fi

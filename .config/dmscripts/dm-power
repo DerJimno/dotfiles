@@ -11,16 +11,16 @@ choice=$(printf 'Suspend\nLog out\nReboot\nPower off' | ${DMENU} 'Power:' "$@")
 if [ "$choice" ]; then
     case "${choice}" in
         'Suspend')
-            alacritty -e sudo systemctl suspend
+            ./.local/bin/stay sudo systemctl suspend
         ;;
         'Log out')
             logout
         ;;
         'Power off')
-            alacritty -e sudo systemctl poweroff
+            ./.local/bin/stay sudo systemctl poweroff
         ;;
         'Reboot')
-            alacritty -e sudo systemctl reboot 
+            ./.local/bin/stay sudo systemctl reboot 
         ;;
     esac
 else
