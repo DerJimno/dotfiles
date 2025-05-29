@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Inspired by BreadOnPenguin
+
+PLAYERS="brave mpv"
+META='{{title}} - {{artist}}' 
+
+for PLAYER in $PLAYERS; do
+# if the player is not playing, continue to the next player, until we find one that is playing
+	[ "$(playerctl --player=$PLAYER status 2>/dev/null)" != "Playing" ] && continue
+		ICON="⏸️ "
+		echo "$ICON"$(playerctl metadata --player $PLAYER --format "$META")
+done | sed -E 's/\[[^]]*\]//g; s/\([^)]*\)//g; s/#.*//' | cut -c1-45  | sed -e 's/ -$//' -e 's/ $//' 
