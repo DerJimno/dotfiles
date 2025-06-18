@@ -281,7 +281,7 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 -- Autostart apps
 ------------------------------------------------------------------------
 myStartupHook = do
-  spawnOnce "xrandr --output HDMI-2 --mode 1920x1080 --rate 144 &"
+  spawnOnce "xrandr --output HDMI-1 --mode 1920x1080 --rate 144 &"
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom --config .config/picom/picom.conf &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
