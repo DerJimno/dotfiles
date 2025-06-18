@@ -294,7 +294,6 @@ myStartupHook = do
 ------------------------------------------------------------------------
 main = do
   xmproc0 <- spawnPipe ("xmobar -x 0 ~/.config/xmobar/" ++ colorScheme ++ "-xmobar.hs " ++ "-B" ++ colorBk ++ " -F" ++ colorFr)
-  -- xmproc1 <- spawnPipe ("xmobar -x 1 ~/.config/xmobar/" ++ colorScheme ++ "-xmobar.hs " ++ "-B" ++ colorBk ++ " -F" ++ colorFr)
   xmonad $ ewmh $ docks $ def
       {
       -- simple stuff
