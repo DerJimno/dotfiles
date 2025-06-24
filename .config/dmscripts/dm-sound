@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+source $HOME/.config/dmscripts/config/config
+
+
+# Get cards ID
+cards=$(pactl list cards short | awk '{print $2}')
+
+# Enable card profile if possible
+for card in $cards; do
+    pactl set-card-profile "$card" output:analog-stereo || pactl set-card-profile "$card" output:hdmi-stereo || true 
+done
+
+# Get sink list
+sinks=$(pactl list short sinks | awk '{print $2}')
+
+# Choose an audio output
+choice=$(echo "$sinks" | sort | ${DMENU} "Change audio output to:")    
+
+if [ "$choice" ]; then
+    # Set as default output
+    pactl set-default-sink "$choice"
+else
+    echo "Program terminated." && exit 0
+fi
