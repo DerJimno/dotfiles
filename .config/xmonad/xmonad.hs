@@ -196,19 +196,20 @@ myKeys conf = mkKeymap conf $
      
     -- KB_group Dmenu Scripts
     , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
-    , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search 
+    , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search
     , ("M-p r"             , spawn "~/.config/dmscripts/dm-radio")       -- dmenu online Radio
     , ("M-p g"             , spawn "~/.config/dmscripts/dm-podcast")     -- dmenu online Podcast
     , ("M-p b"             , spawn "~/.config/dmscripts/dm-bookmarks")   -- dmenu Bookmarks
     , ("M-p n"             , spawn "~/.config/dmscripts/dm-notes")       -- dmenu Notes
     , ("M-p u"             , spawn "~/.config/dmscripts/dm-usbmount")    -- dmenu USB mount/unmount
-    , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- dmenu Colorscheme 
-    , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font 
-    , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth")  -- dmenu Bluetooth 
-    , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")      -- dmenu Power 
+    , ("M-p c"             , spawn "~/.config/dmscripts/dm-colorscheme") -- dmenu Colorscheme
+    , ("M-p f"             , spawn "~/.config/dmscripts/dm-font")        -- dmenu Font
+    , ("M-p a"             , spawn "~/.config/dmscripts/dm-sound")       -- dmenu Select Sound
+    , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth")  -- dmenu Bluetooth
+    , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")      -- dmenu Power
     , ("M-p w"             , spawnAndDo doWeatherBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
     , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
-    , ("M-p v"             , spawnAndDo doPrayerBox "~/.config/dmscripts/dm-prayer")  -- dmenu Check Prayer Time 
+    , ("M-p v"             , spawnAndDo doPrayerBox "~/.config/dmscripts/dm-prayer")  -- dmenu Check Prayer Time
 
 
     -- Switchers 
