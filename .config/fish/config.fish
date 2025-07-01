@@ -14,7 +14,7 @@ function fish_prompt
 end
 
 ########## Aliases ##########
-alias ls='lsd -lah --icon never'
+alias ls='lsd -lah --icon never --group-directories-first'
 alias grep='grep --color=auto'
 alias cat='bat'
 alias vim='nvim'

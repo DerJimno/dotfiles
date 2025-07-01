@@ -8,7 +8,7 @@ PS1="\w -> "
 PS2=">"
 
 ########## Aliases ##########
-alias ls='lsd -lah --icon never'
+alias ls='lsd -lah --icon never --group-directories-first'
 alias grep='grep --color=auto'
 alias cat='bat'
 alias vim='nvim'
@@ -31,6 +31,13 @@ pfetch
 ############ binds ###########
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+
+# fnm
+FNM_PATH="/home/jimno/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
 
 # fnm
 FNM_PATH="/home/jimno/.local/share/fnm"
