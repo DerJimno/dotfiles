@@ -3,7 +3,7 @@ set -euo pipefail
 source .config/dmscripts/config/config
 
 
-choice=$(printf 'Algiers\nParis\nBerlin\nBrussels' | ${DMENU} 'Get weather:' "$@")
+choice=$(printf 'Alger\nParis\nBerlin\nBrussels' | ${DMENU} 'Get weather:' "$@")
 choice="$(echo $choice | sed "s/ /-/g")"
 
 if [ "$choice" ]; then
