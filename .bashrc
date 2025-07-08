@@ -34,14 +34,7 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 # fnm
-FNM_PATH="/home/jimno/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/jimno/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
