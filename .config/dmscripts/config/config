@@ -70,6 +70,7 @@ font_size[Monofur]="12.5 11.5"
 # Bookmarks from Brave
 declare -Ag bookmarks
 while IFS='=' read -r name url; do
+    [[ -z "$name" ]] && continue
     bookmarks["$name"]=$url
 done < <(cat $HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks | grep -E '"name":|"url":' | awk '{
     if ($0 ~ /"name":/) {
