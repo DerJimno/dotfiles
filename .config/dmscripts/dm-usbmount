@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
-source .config/dmscripts/config/config
+source $HOME/.config/dmscripts/config/config
 
 # Drive to ignore
 ignored="sda"

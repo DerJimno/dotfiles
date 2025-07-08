@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-source .config/dmscripts/config/config
+source $HOME/.config/dmscripts/config/config
 
 choice=$(printf '%s\n' "${!color_scheme[@]}" | sort | ${DMENU} 'Choose color scheme:' "${@}")
 vim_theme=$(.config/dmscripts/src/vim-src "$choice")
