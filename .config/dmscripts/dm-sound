@@ -1,26 +1,27 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 source $HOME/.config/dmscripts/config/config
 
 
-# Get cards ID
-cards=$(pactl list cards short | awk '{print $2}')
+# Choose card
+card=$(pactl list cards short | awk '{print $2}' | ${DMENU} 'Choose a card:' )
 
-# Enable card profile if possible
-for card in $cards; do
-    pactl set-card-profile "$card" output:analog-stereo || pactl set-card-profile "$card" output:hdmi-stereo || true 
-done
 
-# Get sink list
-sinks=$(pactl list short sinks | awk '{print $2}')
+if [ "$card" ]; then
+    # Choose output
+    output=$(pactl list cards | sed -n "/Name: $card/,/Active Profile:/p" | grep -oP '^\s*output:[^+:]+' | awk '{print $1}' | ${DMENU} 'Choose an output:' )
+    
+    # Set card profile
+    pactl set-card-profile "$card" "$output"
+    
+    # Set sink
+    sink=$(pactl list sinks short | awk '{print $2}' | ${DMENU} 'Choose sink:' )
+    if [ "$sink" ]; then
+        for i in $(pactl list short sink-inputs | awk '{print $1}'); do pactl move-sink-input "$i" "$sink"; done
+    else
+        echo "No matching sink found for: $sink" && exit 0
+    fi
 
-# Choose an audio output
-choice=$(echo "$sinks" | sort | ${DMENU} "Change audio output to:")    
-
-if [ "$choice" ]; then
-    # Set as default output
-    pactl set-default-sink "$choice"
 else
-    echo "Program terminated." && exit 0
+    echo "$card or $output not set properly" && exit 0
 fi
