@@ -33,6 +33,8 @@ radio_stations[Mixx Martinique]="http://srv2.streaming-ingenierie.fr:8110"
 radio_stations[Jil Fm]="https://my.radioalgerie.dz/player/jilfm.html"
 radio_stations[Bah-dja]="https://my.radioalgerie.dz/player/bahdja.html"
 radio_stations[Chaine-3]="https://my.radioalgerie.dz/player/chaine3.html"
+radio_stations[1000 Oldies]="https://1000oldies.stream.laut.fm/1000oldies"
+radio_stations[Gold FM]="http://stream.goldfm.lt/goldfm.aac"
 radio_stations[kill]="nil"
 
 # Web search
