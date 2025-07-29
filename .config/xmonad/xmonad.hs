@@ -10,6 +10,7 @@ import qualified XMonad.StackSet as W
 -- Actions
 import XMonad.Actions.CycleWS (Direction1D(..), moveTo, shiftTo, WSType(..), nextWS, prevWS, nextScreen, prevScreen)
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.OnScreen (viewOnScreen)
 
 -- Data
 import Data.Maybe (fromJust)
@@ -281,7 +282,9 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 ------------------------------------------------------------------------
 -- Autostart apps
 ------------------------------------------------------------------------
-myStartupHook = do
+myStartupHook = do 
+  windows $ viewOnScreen 0 "chat"  -- show workspace 5 on screen   
+  windows $ viewOnScreen 1 "dev"
   spawnOnce "$HOME/.local/bin/reso"
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom --config .config/picom/picom.conf &"
