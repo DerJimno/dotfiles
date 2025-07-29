@@ -179,7 +179,7 @@ myKeys conf = mkKeymap conf $
     -- KB_group Actions    
     , ("M-<Tab>"           , sendMessage NextLayout)             -- cycle through Layouts
     , ("M-S-<Tab>"         , setLayout $ XMonad.layoutHook conf) -- reset Layout
-    , ("M-C-0"         , withFocused $ windows . W.sink)     -- back from Float to Layouts
+    , ("M-S-0"             , withFocused $ windows . W.sink)     -- back from Float to Layouts
 
     , ("M-S-r"             , refresh)                    -- correct window-size
     , ("M-j"               , windows W.focusDown)        -- focus on next window
