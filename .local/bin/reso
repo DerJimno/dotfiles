@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 xrandr --output HDMI-1 --mode 1920x1080 --rate 144
+xrandr --output HDMI-2 --mode 1400x900 --rate 60 --rotate left
+xrandr --output HDMI-2 --left-of HDMI-1
