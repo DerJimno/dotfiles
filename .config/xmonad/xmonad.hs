@@ -264,7 +264,7 @@ myManageHook = composeAll
                                         --> doShift ( myWorkspaces !! 3 )
     , className =? "discord"            --> doShift ( myWorkspaces !! 4 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 5 )
-    , isDialog                                --> doCenterFloat 
+    , isDialog                          --> doCenterFloat
     ]
 
 ------------------------------------------------------------------------
@@ -283,8 +283,6 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 -- Autostart apps
 ------------------------------------------------------------------------
 myStartupHook = do 
-  windows $ viewOnScreen 0 "chat"  -- show workspace 5 on screen   
-  windows $ viewOnScreen 1 "dev"
   spawnOnce "$HOME/.local/bin/reso"
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom --config .config/picom/picom.conf &"
