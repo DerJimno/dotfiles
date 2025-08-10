@@ -264,6 +264,8 @@ myManageHook = composeAll
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
     , className =? "libreoffice-startcenter"  
                                         --> doShift ( myWorkspaces !! 5 )
+    , className =? "pcloud" <&&> title =? "pCloud Promo"
+                                        --> doIgnore
     , isDialog                          --> doCenterFloat
     ]
 
