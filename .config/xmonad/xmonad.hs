@@ -103,7 +103,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Workspaces
 ------------------------------------------------------------------------
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "www", "doc", "edi", "chat", "vid", "log"]
+myWorkspaces = ["dev", "www", "doc", "chat", "vid", "edi", "log"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -260,10 +260,10 @@ myManageHook = composeAll
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
+    , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
+    , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
     , className =? "libreoffice-startcenter"  
-                                        --> doShift ( myWorkspaces !! 3 )
-    , className =? "discord"            --> doShift ( myWorkspaces !! 4 )
-    , className =? "mpv"                --> doShift ( myWorkspaces !! 5 )
+                                        --> doShift ( myWorkspaces !! 5 )
     , isDialog                          --> doCenterFloat
     ]
 
