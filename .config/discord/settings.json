@@ -9,6 +9,7 @@
     "height": 1024
   },
   "BACKGROUND_COLOR": "#121214",
-  "offloadAdmControls": false,
-  "SKIP_HOST_UPDATE": true
+  "offloadAdmControls": true,
+  "SKIP_HOST_UPDATE": true,
+  "enableHardwareAcceleration": true
 }
