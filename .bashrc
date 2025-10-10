@@ -18,9 +18,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
 alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=/$HOME'
-alias config-hide='config update-index --assume-unchanged'
-alias config-show='config update-index --no-assume-unchanged'
-alias config-hidden='config ls-files -v | grep "^[a-z]"'
+alias config-skip='config update-index --skip-worktree'
+alias config-unskip='config update-index --no-skip-worktree'
+alias config-skipped='config ls-files -v | grep "^S"'
 
 ########## Exports ###########
 export EDITOR=nvim
