@@ -25,6 +25,7 @@ alias mkdir='mkdir -pv'
 alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=$HOME'
 alias config-hide='config update-index --assume-unchanged'
 alias config-show='config update-index --no-assume-unchanged'
+alias config-hidden='config ls-files -v | grep "^[a-z]"'
 
 ########## Exports ###########
 set -gx EDITOR nvim
