@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+
+feh -g 1920x1080 --scale-down wallpapers/
