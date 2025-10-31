@@ -194,7 +194,8 @@ myKeys conf = mkKeymap conf $
     -- KB_group Scripts
     , ("M1-<Shift_L>"      , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
     , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- screenshot + save to clip
-     
+    , ("M-l w"             , spawn "~/.local/bin/set-wallpaper")  -- set wallpaper
+
     -- KB_group Dmenu Scripts
     , ("M-p e"             , spawn "~/.config/dmscripts/dm-editconf")    -- dmenu config files
     , ("M-p s"             , spawn "~/.config/dmscripts/dm-websearch")   -- dmenu web search
