@@ -286,7 +286,7 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 ------------------------------------------------------------------------
 myStartupHook = do 
   spawnOnce "$HOME/.local/bin/reso"
-  spawnOnce "nitrogen --restore &"
+  spawnOnce "~/.fehbg &"
   spawnOnce "picom --config .config/picom/picom.conf &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "xsettingsd &"
