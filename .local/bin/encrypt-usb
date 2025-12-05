@@ -34,7 +34,7 @@ EOF
 
     # mount + chown
     udisksctl mount -b /dev/mapper/drive 
-    sudo chown -R $USER:$USER /run/media/jimno/drive
+    sudo chown -R $USER:$USER /run/media/menaouer/drive
     
     # unmount and close
     sudo umount /dev/mapper/drive || true
