@@ -45,9 +45,11 @@ case "$choice" in
 'Mount Phone')
     mkdir -p ~/phone
     jmtpfs ~/phone
+    dunstify -i $HOME/.icons/notif/phone.svg "Phone mounted!" "~/phone"
 ;;
 'Unmount Phone')
     fusermount -u ~/phone
+    dunstify -i $HOME/.icons/notif/phone.svg "Phone unmounted!" "~/phone"
 ;;
 'Quit')
     echo "Programm Terminated." && exit 0
