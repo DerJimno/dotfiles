@@ -1,75 +1,54 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
-source $HOME/.config/dmscripts/config/config
+source .config/dmscripts/config/config
 
-# Drive to ignore
-ignored="sda"
+# Drive to ignore (seperated with |)
+IGNORED="sda|nvme"
+ 
+DEVICE=$(lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort | ${DMENU} 'Choose drive:' | awk '{print $1}')
 
-
-
-drive_count() {
-    count="$(echo "$1" | wc -l)"
+mount_usb() {
+# Check if LUKS encrypted
+if cryptsetup isLuks "$DEVICE" 2>/dev/null; then
+    MOUNTPOINT="~/mnt/cusb"
+    mkdir -p "$MOUNTPOINT"
+    sudo cryptsetup open "$DEVICE" cusb
+    sudo mount /dev/mapper/cusb "$MOUNTPOINT"
+    echo "Mounted encrypted drive at $MOUNTPOINT"
+else
+    udisksctl mount -b "$DEVICE"
+    dunstify -i $HOME/.icons/notif/drive.svg "Mounted drive" "$DEVICE"
+fi
 }
 
-mount_all() {
-    while IFS= read -r drive; do
-        udisksctl mount -b "${drive%% *}"
-    done < <(printf '%s\n' "$mountable")
+unmount_usb() {
+# Check if LUKS encrypted
+if cryptsetup isLuks "$DEVICE" 2>/dev/null; then
+    MOUNTPOINT="~/mnt/cusb"
+    mkdir -p "$MOUNTPOINT"
+    sudo cryptsetup open "$DEVICE" cusb
+    sudo mount /dev/mapper/cusb "$MOUNTPOINT"
+    echo "Mounted encrypted drive at $MOUNTPOINT"
+else
+    udisksctl unmount -b "$DEVICE"
+    dunstify -i $HOME/.icons/notif/drive.svg "Unmounted drive" "$DEVICE"
+fi
 }
 
-unmount_all() {
-    while IFS= read -r drive; do
-        udisksctl unmount -b "${drive%% *}"
-        # done < <(printf '%s\n' "$mounted")
-    done < <(printf '%s\n' "${mounted%%* }")
-}
-
-mount() {
-    mountable="$(lsblk -lp | awk '/^\/dev\/sd.*part $/ { print $1 " ("$4")" }' | grep -v "$ignored")"
-    [ "$mountable" = "" ] && exit 1
-
-    drive_count "$mountable"
-    [ "$count" = "1" ] && options="$mountable" || options="${mountable%%* }"$'\n'"all"
-
-    chosen="$(printf '%s' "$options" | ${DMENU} "Drive to mount?")" || exit 1
-    if [ "$chosen" = "all" ]; then
-        mount_all
-    else
-        udisksctl mount -b "${chosen%% *}"
-    fi
-}
-
-unmount() {
-    # mounted="$(lsblk -lp | awk '/run/ { print $1 }')"
-    mounted="$(lsblk -lp | grep 'run')"
-    [ "$mounted" = "" ] && exit 1
-
-    # drive_count "$mounted"
-    drive_count "${mounted%%* }"
-    # [ "$count" = "1" ] && options="$mounted" || options="$mounted\nall"
-    [ "$count" = "1" ] && options="${mounted%%* }" || options="${mounted%%* }"$'\n'"all"
-    chosen="$(printf '%s' "${options}" | ${DMENU} "Drive to unmount?")"
-    if [ "$chosen" = "all" ]; then
-        unmount_all
-    else
-        udisksctl unmount -b "${chosen%% *}"
-    fi
-}
-
-choice=$(printf 'Mount Phone\nUnmount Phone\nMount USB\nUnmount USB\nQuit' | ${DMENU} 'USB:' )
+choice=$(printf 'Mount USB\nUnmount USB\nMount Phone\nUnmount Phone\nQuit' | ${DMENU} 'USB:')
 case "$choice" in
 'Mount USB')
-    mount
+    mount_usb
 ;;
 'Unmount USB')
-    unmount
+    unmount_usb
 ;;
 'Mount Phone')
-    jmtpfs ~/mnt
+    mkdir -p ~/phone
+    jmtpfs ~/phone
 ;;
 'Unmount Phone')
-    umount ~/mnt
+    fusermount -u ~/phone
 ;;
 'Quit')
     echo "Programm Terminated." && exit 0
