@@ -26,15 +26,15 @@ EOF
     
     # decrypt + ext4 and label
     sudo cryptsetup open "$DEVICE"1 drive 
-    sudo mkfs.ext4 /dev/mapper/drive
-    sudo e2label /dev/mapper/drive drive
+    sudo mkfs.ntfs -Q /dev/mapper/drive
+    sudo ntfslabel /dev/mapper/drive drive
     
     # wait 2 sec
     sleep 2
 
     # mount + chown
     udisksctl mount -b /dev/mapper/drive 
-    sudo chown -R $USER:$USER /run/media/menaouer/drive
+    sudo chown -R $USER:$USER /run/media/jimno/drive
     
     # unmount and close
     sudo umount /dev/mapper/drive || true
