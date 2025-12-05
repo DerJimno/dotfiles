@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Drives to ignore (seperated with |)
+IGNORED="sda|nvme"
+
+encrypt_usb() {
+    echo "Available drives:"
+    lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort
+    read -rp "Enter device to encrypt (e.g., /dev/sdc): " DEVICE
+    
+    # Make a partition to work with
+    sudo fdisk "$DEVICE" <<EOF
+    g
+    n
+    1
+
+    w
+EOF
+    # encrypt drive
+    sudo cryptsetup luksFormat "$DEVICE"1
+    
+    # check for abnormalies
+    sudo umount /dev/mapper/drive || true
+    sudo cryptsetup close drive || true 
+    
+    # decrypt + ext4 and label
+    sudo cryptsetup open "$DEVICE"1 drive 
+    sudo mkfs.ext4 /dev/mapper/drive
+    sudo e2label /dev/mapper/drive drive
+    
+    # wait 2 sec
+    sleep 2
+
+    # mount + chown
+    udisksctl mount -b /dev/mapper/drive 
+    sudo chown -R $USER:$USER /run/media/jimno/drive
+    
+    # unmount and close
+    sudo umount /dev/mapper/drive || true
+    sudo cryptsetup close drive
+}
+
+encrypt_usb
