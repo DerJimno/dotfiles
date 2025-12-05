@@ -2,36 +2,35 @@
 set -euo pipefail
 source .config/dmscripts/config/config
 
-# Drive to ignore (seperated with |)
+# Drives to ignore (seperated with |)
 IGNORED="sda|nvme"
  
-DEVICE=$(lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort | ${DMENU} 'Choose drive:' | awk '{print $1}')
 
 mount_usb() {
-# Check if LUKS encrypted
-if cryptsetup isLuks "$DEVICE" 2>/dev/null; then
-    MOUNTPOINT="~/mnt/cusb"
-    mkdir -p "$MOUNTPOINT"
-    sudo cryptsetup open "$DEVICE" cusb
-    sudo mount /dev/mapper/cusb "$MOUNTPOINT"
-    echo "Mounted encrypted drive at $MOUNTPOINT"
+DEVICE=$(lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort | ${DMENU} 'Choose drive to mount:' | awk '{print $1}')
+# Check if drive is LUKS encrypted
+if lsblk -f "$DEVICE" | grep -q "crypto_LUKS"; then
+    alacritty -e bash -c "udisksctl unlock -b '$DEVICE'; read -n1 -rsp 'Press any key to close...'"
+    MAPPER=$(ls /dev/dm-* | sort | ${DMENU} 'Choose MAPPER:')
+    udisksctl mount -b "$MAPPER"
+    dunstify -i $HOME/.icons/notif/drive.svg "Drive decrypted and mounted!" "$DEVICE"
 else
     udisksctl mount -b "$DEVICE"
-    dunstify -i $HOME/.icons/notif/drive.svg "Mounted drive" "$DEVICE"
+    dunstify -i $HOME/.icons/notif/drive.svg "Drive mounted!" "$DEVICE"
 fi
 }
 
 unmount_usb() {
-# Check if LUKS encrypted
-if cryptsetup isLuks "$DEVICE" 2>/dev/null; then
-    MOUNTPOINT="~/mnt/cusb"
-    mkdir -p "$MOUNTPOINT"
-    sudo cryptsetup open "$DEVICE" cusb
-    sudo mount /dev/mapper/cusb "$MOUNTPOINT"
-    echo "Mounted encrypted drive at $MOUNTPOINT"
+DEVICE=$(lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort | ${DMENU} 'Choose drive to unmount:' | awk '{print $1}')
+# Check if drive is LUKS encrypted
+if lsblk -f "$DEVICE" | grep -q "crypto_LUKS"; then
+    MAPPER=$(ls /dev/dm-* | sort | ${DMENU} 'Choose MAPPER:')
+    udisksctl unmount -b "$MAPPER"
+    udisksctl lock -b "$DEVICE"
+    dunstify -i $HOME/.icons/notif/drive.svg "Drive unmounted and crypted!" "$DEVICE"
 else
     udisksctl unmount -b "$DEVICE"
-    dunstify -i $HOME/.icons/notif/drive.svg "Unmounted drive" "$DEVICE"
+    dunstify -i $HOME/.icons/notif/drive.svg "Drive unmounted!" "$DEVICE"
 fi
 }
 
