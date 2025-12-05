@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-source .config/dmscripts/config/config
 
 # Drives to ignore (seperated with |)
 IGNORED="sda|nvme"
