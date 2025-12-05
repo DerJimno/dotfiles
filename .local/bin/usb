@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source .config/dmscripts/config/config
+
+# Drives to ignore (seperated with |)
+IGNORED="sda|nvme"
+
+mount_usb() {
+    echo "Available drives:"
+    lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort
+    read -rp "Enter device to mount (e.g., /dev/sdc1): " DEVICE
+
+    # Check if drive is LUKS encrypted
+    if lsblk -f "$DEVICE" | grep -q "crypto_LUKS"; then
+        udisksctl unlock -b "$DEVICE"
+        read -rp "Enter device MAPPER (e.g., /dev/dm-0): " MAPPER 
+        udisksctl mount -b "$MAPPER"
+        echo "--------successfuly decrypted and mounted $DEVICE--------"
+    else
+        udisksctl mount -b "$DEVICE"
+        echo "--------successfuly mounted $DEVICE--------"
+    fi
+}
+
+unmount_usb() {
+    echo "Available drives:"
+    lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort
+    read -rp "Enter device to mount (e.g., /dev/sdc1): " DEVICE
+
+    # Check if drive is LUKS encrypted
+    if lsblk -f "$DEVICE" | grep -q "crypto_LUKS"; then
+        read -rp "Enter device MAPPER (e.g., /dev/dm-0): " MAPPER
+        udisksctl unmount -b "$MAPPER"
+        udisksctl lock -b "$DEVICE"
+        echo "--------successfuly unmounted and crypted $DEVICE--------"
+    else
+        udisksctl unmount -b "$DEVICE"
+        echo "--------successfuly unmounted $DEVICE---------"
+    fi
+}
+
+mount_phone() {
+    mkdir -p ~/phone
+    jmtpfs ~/phone
+    echo "--------successfuly mounted--------"
+}
+
+unmount_phone() {
+    fusermount -u ~/phone
+    echo "--------successfuly unmounted--------"
+}
+
+echo "Choose an action:"
+echo "1) Mount USB"
+echo "2) Unmount USB"
+echo "3) Mount Phone"
+echo "4) Unmount Phone"
+echo "5) Quit"
+read -rp "Type the number: " choice
+
+case "$choice" in
+    1) mount_usb ;;
+    2) unmount_usb ;;
+    3) mount_phone ;;
+    4) unmount_phone ;;
+    5) echo "Program terminated." && exit 0 ;;
+    *) echo "Invalid choice, try again." ;;
+esac
