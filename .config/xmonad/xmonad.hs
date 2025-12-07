@@ -263,6 +263,8 @@ myManageHook = composeAll
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
     , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
+    , className =? "Alacritty" <&&> title =? "password"
+                                        --> doPassBox
     , className =? "libreoffice-startcenter"  
                                         --> doShift ( myWorkspaces !! 5 )
     , className =? "pcloud" <&&> title =? "pCloud Promo"

@@ -10,7 +10,7 @@ mount_usb() {
 DEVICE=$(lsblk -lp | grep "part" | grep -Ev "$IGNORED" | sort | ${DMENU} 'Choose drive to mount:' | awk '{print $1}')
 # Check if drive is LUKS encrypted
 if lsblk -f "$DEVICE" | grep -q "crypto_LUKS"; then
-    alacritty -e bash -c "udisksctl unlock -b '$DEVICE'; read -n1 -rsp 'Press any key to close...'"
+    alacritty --title password -e bash -c "udisksctl unlock -b '$DEVICE'; read -n1 -rsp 'Press any key to close...'"
     MAPPER=$(ls /dev/dm-* | sort | ${DMENU} 'Choose MAPPER:')
     udisksctl mount -b "$MAPPER"
     dunstify -i $HOME/.icons/notif/drive.svg "Drive decrypted and mounted!" "$DEVICE"
