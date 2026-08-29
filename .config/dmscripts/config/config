@@ -29,12 +29,12 @@ declare -Ag radio_stations
 radio_stations[Quran Station]="https://my.radioalgerie.dz/player/coran.html"
 radio_stations[Lofi]="http://192.95.39.65:5607"
 radio_stations[J-Pop Kawaii]="https://kathy.torontocast.com:3060"
-radio_stations[Mixx Martinique]="http://srv2.streaming-ingenierie.fr:8110"
 radio_stations[Jil Fm]="https://my.radioalgerie.dz/player/jilfm.html"
 radio_stations[Bah-dja]="https://my.radioalgerie.dz/player/bahdja.html"
 radio_stations[Chaine-3]="https://my.radioalgerie.dz/player/chaine3.html"
-radio_stations[1000 Oldies]="https://1000oldies.stream.laut.fm/1000oldies"
-radio_stations[Gold FM]="http://stream.goldfm.lt/goldfm.aac"
+radio_stations[Zeno Lofi]="https://stream.zeno.fm/f3wvbbqmdg8uv"
+radio_stations[Secretagent Lofi]="https://ice1.somafm.com/secretagent-128-mp3"
+radio_stations[Box Lofi]="https://stream.zeno.fm/f3wvbbqmdg8uv"
 radio_stations[kill]="nil"
 
 # Web search
@@ -60,14 +60,9 @@ color_scheme[OceanicNext]="oceanic-next"
 color_scheme[TokyoNight]="tokyo-night"
 
 declare -Ag font_size
-font_size[Comic Mono]="12 10"
 font_size[Fira Code]="11 9"
-font_size[Cascadia Code]="11 9.5"
-font_size[Hack]="11 9.5"
-font_size[Inconsolata]="13 10"
-font_size[Ubuntu Mono]="12 11"
 font_size[Terminus]="13 12"
-font_size[Monofur]="12.5 11.5"
+font_size[Ubuntu Mono]="12 11"
 
 # Bookmarks from Brave
 declare -Ag bookmarks
