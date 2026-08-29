@@ -21,4 +21,7 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+
+  concurrency = 1,
+  timeout = 300,
 })
