@@ -41,6 +41,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.Reflect
+import XMonad.Layout.ThreeColumns
 
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit , decreaseLimit)
@@ -103,7 +104,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- Workspaces
 ------------------------------------------------------------------------
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "www", "doc", "chat", "vid", "edi", "log"]
+myWorkspaces = ["dev", "www", "doc", "rec", "vid", "str", "edi"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -157,6 +158,13 @@ spirals  = renamed [Replace "spirals"]
            $ mySpacing 8
            $ spiral (6/7)
 
+threeCol = renamed [Replace "threeCol"]
+           $ limitWindows 7
+           $ smartBorders
+           $ subLayout [] (smartBorders Simplest)
+           $ mySpacing 8
+           $ ThreeColMid 1 (3/100) (45/100)
+
 ------------------------------------------------------------------------
 -- KEYBINDINGS
 ------------------------------------------------------------------------
@@ -173,7 +181,7 @@ myKeys conf = mkKeymap conf $
     , ("M-l f"             , spawn "pcmanfm")            -- launch Pcmanfm
     , ("M-l b"             , spawn "brave")              -- launch Brave
     , ("M-l l"             , spawn "libreoffice")        -- launch Libreoffice
-    , ("M-l d"             , spawn "discord")            -- launch Discord
+    , ("M-l k"             , spawn "./Applications/kdenlive.AppImage")                                         -- launch Kdenlive
     , ("M-l m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
 
     -- KB_group Actions    
@@ -192,7 +200,7 @@ myKeys conf = mkKeymap conf $
     , ("M-S-<End>"         , spawn "xset dpms force off")-- Shuts down screen
     
     -- KB_group Scripts
-    , ("M1-<Shift_L>"      , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
+    , ("M-\\"              , spawn "~/.local/bin/toggle-keylay")  -- swap Keyboard layout
     , ("<Print>"           , spawn "~/.local/bin/screen-clip")    -- screenshot + save to clip
     , ("M-l w"             , spawn "~/.local/bin/set-wallpaper")  -- set wallpaper
 
@@ -243,10 +251,11 @@ myKeys conf = mkKeymap conf $
 ------------------------------------------------------------------------
 -- Layouthook:
 ------------------------------------------------------------------------
-myLayout = avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
-                                                    tall
+myLayout = toggleLayouts (noBorders Full) $ avoidStruts $ withBorder myBorderWidth $ toggleLayouts Full (
+                                                    threeCol
+                                                ||| tall
                                                 ||| reflectHoriz tall
-                                                --  ||| Mirror tall
+                                                ||| Mirror tall
                                                 ||| grid
                                                 ||| spirals
                                                 ||| Accordion )
@@ -261,12 +270,12 @@ myManageHook = composeAll
     , className =? "mpv"                --> doFloat 
     , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
-    , className =? "discord"            --> doShift ( myWorkspaces !! 3 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
     , className =? "Alacritty" <&&> title =? "password"
                                         --> doPassBox
     , className =? "libreoffice-startcenter"  
                                         --> doShift ( myWorkspaces !! 5 )
+    , className =? "kdenlive"           --> doShift ( myWorkspaces !! 6 )
     , className =? "pcloud" <&&> title =? "pCloud Promo"
                                         --> doIgnore
     , isDialog                          --> doCenterFloat
@@ -290,7 +299,6 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 myStartupHook = do 
   spawnOnce "$HOME/.local/bin/reso"
   spawnOnce "~/.fehbg &"
-  spawnOnce "picom --config .config/picom/picom.conf &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "xsettingsd &"
   spawnOnce "pcloud &"
@@ -301,7 +309,7 @@ myStartupHook = do
 ------------------------------------------------------------------------
 main = do
   xmproc0 <- spawnPipe ("xmobar -x 0 ~/.config/xmobar/" ++ colorScheme ++ "-xmobar.hs " ++ "-B" ++ colorBk ++ " -F" ++ colorFr)
-  xmonad $ ewmh $ docks $ def
+  xmonad $ ewmhFullscreen $ ewmh $ docks $ def
       {
       -- simple stuff
         terminal           = myTerminal,
