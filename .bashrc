@@ -17,6 +17,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
+alias mirrors='sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias config='/usr/bin/git --git-dir=/$HOME/.cfg/ --work-tree=/$HOME'
 alias config-skip='config update-index --skip-worktree'
 alias config-unskip='config update-index --no-skip-worktree'
@@ -28,9 +29,6 @@ export TERM=alacritty
 export HISTCONTROL=erasedups
 export HISTSIZE=500
 export MANPAGER="nvim +Man!"
-
-######### Autostart ##########
-pfetch
 
 ############ binds ###########
 bind '"\e[A": history-search-backward'
