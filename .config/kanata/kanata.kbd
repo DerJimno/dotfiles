@@ -1,33 +1,44 @@
-;; defsrc is still necessary
 (defcfg
     process-unmapped-keys yes
     log-layer-changes no
- )
+)
 
 (defsrc
-    caps 
-    spc
-    h j k l
- )
+    caps spc h j k l
+    lalt a o u s
+)
 
 (deflayer base
-    @cap 
-    @spc
-    h j k l
- )
+    @cap @spc h j k l
+    @lalt-mod a o u s
+)
 
 (deflayer cap-mod      
-    _ 
-    _
-    left down up rght
- )
+    _ _ left down up rght
+    _ _ _ _ _
+)
+
+;; The German layer maps the target keys to their respective unicode aliases
+(deflayer german
+    _ _ _ _ _ _
+    _ @a_uml @o_uml @u_uml @esszet
+)
 
 (defvar
     tap-time 200 
     hold-time 250
- )
+)
 
 (defalias
     spc (tap-hold-press $tap-time $hold-time spc lmet)
     cap (tap-hold-press $tap-time $hold-time esc (layer-toggle cap-mod))
- )
+    
+    ;; Keeps standard Left Alt functionality on tap, triggers German layer on hold
+    lalt-mod (tap-hold-press $tap-time $hold-time lalt (layer-toggle german))
+
+    ;; Aliases: 'fork' intercepts Shift states to output uppercase automatically[cite: 1]
+    a_uml (fork (unicode ä) (unicode Ä) (lsft rsft))
+    o_uml (fork (unicode ö) (unicode Ö) (lsft rsft))
+    u_uml (fork (unicode ü) (unicode Ü) (lsft rsft))
+    esszet (unicode ß)
+)
