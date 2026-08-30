@@ -297,7 +297,6 @@ myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 -- Autostart apps
 ------------------------------------------------------------------------
 myStartupHook = do 
-  spawnOnce "$HOME/.local/bin/reso"
   spawnOnce "~/.fehbg &"
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "xsettingsd &"
