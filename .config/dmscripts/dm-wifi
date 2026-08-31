@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+source $HOME/.config/dmscripts/config/config
+
+
+ssid=$(printf '' | ${DMENU} 'Wifi SSID:' "$@")
+
+
+if [ "$ssid" ]; then
+    password=$( printf '' | ${DMENU} 'Wifi Passowrd:' "$@")
+    if [ "$password" ]; then
+        nmcli device wifi connect "$ssid" password "$password"
+        dunstify -i $HOME/.icons/notif/wifi.svg "Connected" "$ssid"
+    else
+        echo "Program terminated." && exit 0
+    fi
+else
+    echo "Program terminated." && exit 0
+fi
