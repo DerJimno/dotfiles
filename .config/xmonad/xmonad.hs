@@ -115,7 +115,6 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
 doKeybindBox = doRectFloat (W.RationalRect 0.4 0.17 0.2 0.71)
 doPassBox = doRectFloat (W.RationalRect 0.44 0.45 0.12 0.03)
 doWeatherBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
-doPrayerBox = doRectFloat (W.RationalRect 0.42 0.4 0.16 0.14)
 doMessageBox = doRectFloat (W.RationalRect 0.26 0.2 0.5 0.58)
 
 ------------------------------------------------------------------------
@@ -218,8 +217,8 @@ myKeys conf = mkKeymap conf $
     , ("M-p y"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-bluetooth")  -- dmenu Bluetooth
     , ("M-p p"             , spawnAndDo doPassBox "~/.config/dmscripts/dm-power")      -- dmenu Power
     , ("M-p w"             , spawnAndDo doWeatherBox "~/.config/dmscripts/dm-weather") -- dmenu Check weather
-    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")   -- dmenu Password Manager
-    , ("M-p v"             , spawnAndDo doPrayerBox "~/.config/dmscripts/dm-prayer")  -- dmenu Check Prayer Time
+    , ("M-p j"             , spawn "passmenu -i -l 20 -p 'Password:'")                 -- dmenu Password Manager
+    , ("M-p v"             , spawn "~/.config/dmscripts/dm-wifi")                      -- dmenu Vifi connect
 
 
     -- Switchers 
