@@ -1,8 +1,9 @@
 -- Treesitter
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master", -- Pin to master branch where configs module exists
   build = ":TSUpdate",
-  config = function ()
+  config = function()
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
@@ -13,13 +14,12 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<Enter>", -- set to `false` to disable one of the mappings
-          node_incremental = "<Enter>", -- Press Enter to incremental select
+          init_selection = "<Enter>",
+          node_incremental = "<Enter>",
           scope_incremental = false,
-          node_decremental = "<Backspace>", -- Press Backspace to decremental select
-
+          node_decremental = "<Backspace>",
         },
       },
     })
-  end
+  end,
 }
