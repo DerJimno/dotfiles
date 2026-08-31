@@ -2,9 +2,9 @@ Config {
     -- appearance
     font = "Ubuntu Mono Bold 11"
     , additionalFonts = [ "Ubuntu Mono Bold 8.5"
-                        , "Monoki Nerd Font 15"
-                        , "Monoki Nerd Font 16"
-                        , "Monoki Nerd Font 25"
+                        , "Monoki Nerd Font 10"
+                        , "Monoki Nerd Font 22"
+                        , "Monoki Nerd Font 13"
                         ]
     , bgColor =      "#1a1b26"
     , fgColor =      "#a9b1d6"
@@ -50,4 +50,4 @@ Config {
       -- layout
     , sepChar =  "%"
     , alignSep = "}{"
-    , template = " <fc=#adbf04>%logo%</fc> | %UnsafeStdinReader% }{ <fn=1><fc=#f4938c>%playing%</fc></fn>  <fc=#f4938c>%pacupicon% %pacup%</fc> | <fc=#c8775c>%cpu%</fc> | <fc=#c8775c>%cpu-temp-icon%%cpu-temp%</fc> | <fc=#a4e4fc>%disku%</fc> | <fc=#3cbcfc>%memory%</fc> | <fc=#3cbcfc>%enp34s0%</fc> | <fc=#008888>%date%</fc> | <fc=#adbf04>%volicon% %vol%</fc> | <fc=#adbf04>%kbdicon%%kbd%</fc> "
+    , template = " <fc=#adbf04>%logo%</fc> | %UnsafeStdinReader% }{ <fn=1><fc=#f4938c>%playing%</fc></fn>  <fc=#f4938c>%pacupicon%  %pacup%</fc> | <fc=#c8775c>%cpu%</fc> | <fc=#c8775c>%cpu-temp-icon%%cpu-temp%</fc> | <fc=#a4e4fc>%disku%</fc> | <fc=#3cbcfc>%memory%</fc> | <fc=#3cbcfc>%enp34s0%</fc> | <fc=#008888>%date%</fc> | <fc=#adbf04>%volicon% %vol%</fc> | <fc=#adbf04>%kbdicon%%kbd%</fc> "
