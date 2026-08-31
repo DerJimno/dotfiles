@@ -178,7 +178,7 @@ myKeys conf = mkKeymap conf $
     , ("M-r"               , spawn "dmenu_run")          -- launch Dmenu 
     , ("M-<Return>"        , spawn "alacritty")          -- launch Alacritty
     , ("M-l f"             , spawn "pcmanfm")            -- launch Pcmanfm
-    , ("M-l b"             , spawn "brave")              -- launch Brave
+    , ("M-l b"             , spawn "brave-origin")       -- launch Brave
     , ("M-l l"             , spawn "libreoffice")        -- launch Libreoffice
     , ("M-l k"             , spawn "./Applications/kdenlive.AppImage")                                         -- launch Kdenlive
     , ("M-l m"             , sequence_ [spawnOn "chat" "alacritty -e neomutt", windows $ W.greedyView "chat"]) -- launch Neomutt
@@ -267,7 +267,7 @@ myManageHook = composeAll
     [ className =? "Gimp"               --> doFloat
     , className =? "Xmessage"           --> doMessageBox 
     , className =? "mpv"                --> doFloat 
-    , className =? "Brave-browser"      --> doShift ( myWorkspaces !! 1 )
+    , className =? "Brave-origin"       --> doShift ( myWorkspaces !! 1 )
     , className =? "Pcmanfm"            --> doShift ( myWorkspaces !! 2 )
     , className =? "mpv"                --> doShift ( myWorkspaces !! 4 )
     , className =? "Alacritty" <&&> title =? "password"
