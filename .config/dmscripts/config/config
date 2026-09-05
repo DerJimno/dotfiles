@@ -4,7 +4,7 @@
 DMENU="dmenu -i -l 20 -p"
 DMTERM="alacritty -e"
 DMEDITOR="${DMTERM} nvim"
-DMBROWSER="brave"
+DMBROWSER="brave-origin"
 
 # Notes dir
 notes="${HOME}/.config/dmscripts/notes"
@@ -29,9 +29,6 @@ declare -Ag radio_stations
 radio_stations[Quran Station]="https://my.radioalgerie.dz/player/coran.html"
 radio_stations[Lofi]="http://192.95.39.65:5607"
 radio_stations[J-Pop Kawaii]="https://kathy.torontocast.com:3060"
-radio_stations[Jil Fm]="https://my.radioalgerie.dz/player/jilfm.html"
-radio_stations[Bah-dja]="https://my.radioalgerie.dz/player/bahdja.html"
-radio_stations[Chaine-3]="https://my.radioalgerie.dz/player/chaine3.html"
 radio_stations[Zeno Lofi]="https://stream.zeno.fm/f3wvbbqmdg8uv"
 radio_stations[Secretagent Lofi]="https://ice1.somafm.com/secretagent-128-mp3"
 radio_stations[Box Lofi]="https://stream.zeno.fm/f3wvbbqmdg8uv"
@@ -49,6 +46,7 @@ websearch[Gamivo]="https://www.gamivo.com/search/"
 websearch[StackOverFlow]="https://www.stackoverflow.com/search?q="
 websearch[ThePirateBay]="https://www.thepiratebay.org/search.php?q="
 websearch[Hoogle(Haskell)]="https://hoogle.haskell.org/?hoogle="
+websearch[Duden]="https://www.duden.de/suchen/dudenonline/"
 
 
 declare -Ag color_scheme
@@ -69,7 +67,7 @@ declare -Ag bookmarks
 while IFS='=' read -r name url; do
     [[ -z "$name" ]] && continue
     bookmarks["$name"]=$url
-done < <(cat $HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks | grep -E '"name":|"url":' | awk '{
+done < <(cat $HOME/.config/BraveSoftware/Brave-Origin/Default/Bookmarks | grep -E '"name":|"url":' | awk '{
     if ($0 ~ /"name":/) {
         gsub(/[[:space:]]*"name":[[:space:]]*|"[,}]*/, "", $0);
         name = $0;
